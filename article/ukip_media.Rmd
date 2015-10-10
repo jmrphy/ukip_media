@@ -27,24 +27,27 @@ This research note presents the first statistical time-series analysis testing t
 require(lubridate)
 require(ggplot2)
 require(timeSeries)
+require(tseries)
 require(reshape2)
 require(scales)
 require(vars)
 require(car)
 require(dynlm)
 require(stargazer)
+require(sandwich)
+require(forecast)
 
-
-setwd("~/Dropbox/side_projects/ukip_media")
-#setwd("C:/Users/Daniel/Dropbox/ukip_media")
-df<-read.csv("media_ukip.csv")
+#setwd("C:/Users/Daniel/Dropbox/ukip_media/article")
+setwd("~/Dropbox/gh_projects/ukip_media/article")
+df<-read.csv("~/Dropbox/gh_projects/ukip_media/data/ukip_media.csv")
 df$Date<-mdy(df$Date)
 
 df$UKIP.Vote<-interpNA(df$UKIP.Vote, method = "linear")
 
 unscaled<-df
 
-modelvars<-df[c("UKIP.Vote", "UKIP.Articles")]
+modelvars<-df[c("Date", "UKIP.Vote", "UKIP.Articles", "General.Election2005", "General.Election2010",
+                "General.Election2015", "Euro.Election2004","Euro.Election2009", "Euro.Election2014")]
 
 cbbPalette <- c("#D55E00", "#0072B2","#009E73","#999999", "#56B4E9","#CC79A7")
 
@@ -122,40 +125,72 @@ Taken together, VAR results suggest qualified evidence for both directions of ca
 \pagebreak
 
 ```{r, warning=FALSE, message=FALSE, error=FALSE, echo=FALSE, echo=FALSE, fig.height=4, fig.width=8}
-# adf.test(df$UKIP.Articles)
-# adf.test(df$UKIP.Vote)
+# adf.test(df$UKIP.Articles)  # non-stationary
+# adf.test(df$UKIP.Vote) # non-stationary
 
 modelvars$UKIP.Articles<-log(modelvars$UKIP.Articles)
 modelvars$UKIP.Vote<-log(modelvars$UKIP.Vote)
 
+modelvars$General.Elections<-ifelse(modelvars$General.Election2005==1 | modelvars$General.Election2010==1 |
+                                     modelvars$General.Election2015==1, 1, 0)
+modelvars$EU.Elections<-ifelse(modelvars$Euro.Election2004==1 | 
+                                modelvars$Euro.Election2009==1 |
+                                modelvars$Euro.Election2014==1,
+                              1, 0)
+
 # modelvars$UKIP.Articles<-scale(modelvars$UKIP.Articles)
 # modelvars$UKIP.Vote<-scale(modelvars$UKIP.Vote)
 
-diffvars<-data.frame()
-diffvars<-as.data.frame(cbind(diff(modelvars$UKIP.Articles), diff(modelvars$UKIP.Vote)))
-names(diffvars)<-c("UKIP.Articles", "UKIP.Vote")
+diffvars<-data.frame()  # difference variables and lag dates/elections to match
+diffvars<-as.data.frame(cbind(modelvars$Date[2:length(modelvars$Date)],
+                              diff(modelvars$UKIP.Vote),
+                              diff(modelvars$UKIP.Articles),
+                              modelvars[2:length(modelvars$Date), 4:11]))
+names(diffvars)<-c("Date", "UKIP.Vote", "UKIP.Articles", "General.Election2005", "General.Election2010",
+                    "General.Election2015", "Euro.Election2004","Euro.Election2009", "Euro.Election2014",
+                   "General.Elections", "EU.Elections")
+row.names(diffvars)<-NULL
 
-# adf.test(diffvars$UKIP.Articles)
-# adf.test(diffvars$UKIP.Vote)
+x <- ts(diffvars$UKIP.Articles, deltat=1/12)
+fit <- tbats(x)
+# !is.null(fit$seasonal) # is seasonal
 
-# VARselect(diffvars, type="both", season=12)$selection[1]
+x <- ts(diffvars$UKIP.Vote, deltat=1/12)
+fit <- tbats(x)
+# !is.null(fit$seasonal) # is seasonal
 
-varmodel<-VAR(diffvars, lag.max=10, ic="AIC", type="both")
-var.season<-VAR(diffvars, lag.max=10, ic="AIC", type="both", season=12)
+
+# adf.test(diffvars$UKIP.Articles)  # stationary after differencing
+# adf.test(diffvars$UKIP.Vote)   # stationary after differencing
+
+# VARselect(diffvars[2:3], type="both", season=12, exogen=diffvars[9:10])
+# VARselect(diffvars[2:3], type="both", season=12, exogen=diffvars[4:8])$selection[1]
+
+varmodel<-VAR(diffvars[2:3], lag.max=10, ic="AIC", type="both", exogen=diffvars[10:11])
+# var.season<-VAR(diffvars[2:3], lag.max=10, ic="AIC", type="both", season=12, exogen=diffvars[9:10])
 # varmodel<-VAR(diffvars, p=1, type="both", season=12)
 # serial.test(varmodel)  # big p = good
 # arch.test(varmodel)    # big p = good
 # stab<-stability(varmodel)
 # plot(stab)
+# summary(varmodel)
 # summary(varmodel, equation="UKIP.Articles")
+# summary(varmodel, equation="UKIP.Vote")
+# summary(var.season)
+# summary(var.season, equation="UKIP.Articles")
 # summary(var.season, equation="UKIP.Vote")
 
 # causality(varmodel, cause="UKIP.Vote", vcov.=vcovHC(varmodel))
 # causality(varmodel, cause="UKIP.Articles", vcov.=vcovHC(varmodel))
 
+# causality(var.season, cause="UKIP.Vote", vcov.=vcovHC(var.season))
+# causality(var.season, cause="UKIP.Articles", vcov.=vcovHC(var.season))
+
 set.seed(666)
-plot(irf(varmodel, impulse="UKIP.Vote", response="UKIP.Articles"), main="Impulse Response from Vote, No Seasonality")
-plot(irf(var.season, impulse="UKIP.Vote", response="UKIP.Articles"), main="Impulse Response from UKIP.Vote, With Seasonality")
+plot(irf(varmodel, impulse="UKIP.Vote", response="UKIP.Articles", cumulative=TRUE), 
+     main="Impulse Response of Articles from Support")
+plot(irf(varmodel, impulse="UKIP.Articles", response="UKIP.Vote", cumulative=TRUE),
+     main="Impulse Response of Support from Articles")
 
 # fcst <- predict(varmodel, n.ahead = 8, ci = 0.95)
 # fanchart(fcst)
@@ -163,8 +198,11 @@ plot(irf(var.season, impulse="UKIP.Vote", response="UKIP.Articles"), main="Impul
 
 
 ```{r, warning=FALSE, message=FALSE, error=FALSE, echo=FALSE, echo=FALSE, fig.height=4, fig.width=8}
-plot(irf(varmodel, impulse="UKIP.Articles", response="UKIP.Vote"), main="Impulse Response from Articles, No Seasonality")
-plot(irf(var.season, impulse="UKIP.Articles", response="UKIP.Vote", main="Impulse Response from Articles, No Seasonality"))
+set.seed(666)
+plot(irf(varmodel, impulse="UKIP.Vote", response="UKIP.Articles", cumulative=TRUE, boot=TRUE, ortho=TRUE), 
+     main="Impulse Response of Articles from Support")
+plot(irf(varmodel, impulse="UKIP.Articles", response="UKIP.Vote", cumulative=TRUE, boot=TRUE, ortho=TRUE),
+     main="Impulse Response of Support from Articles")
 ```
 
 ## ECM
@@ -173,11 +211,15 @@ Given the inherent limitations of the VAR approach, the error-correction model (
 
 ```{r, warning=FALSE, message=FALSE, error=FALSE, echo=FALSE, echo=FALSE, results='asis'}
 modelvars<-as.ts(modelvars)
-ecm.articles<-dynlm(d(UKIP.Articles) ~
-                lag(UKIP.Articles, -1) +
-                lag(UKIP.Vote,1,lag=1) +
-                diff(UKIP.Vote,1,lag=1) +
-              trend(UKIP.Articles),
+ecm.articles<-dynlm(diff(UKIP.Articles) ~
+                lag(UKIP.Articles, k=1) +
+                  lag(UKIP.Articles, k=2) +
+                  lag(UKIP.Articles, k=3)
+                lag(UKIP.Vote,k=1) +
+                diff(UKIP.Vote,diff=1, lag=1) +
+                trend(UKIP.Articles) +
+                  General.Elections +
+                  EU.Elections,
                 data=modelvars)
 # summary(ecm.articles)
 
@@ -186,11 +228,13 @@ ecm.articles<-dynlm(d(UKIP.Articles) ~
 # acf(residuals(ecm.articles))
 # durbinWatsonTest(ecm.articles)
 
-ecm.vote<-dynlm(d(UKIP.Vote) ~
-                lag(UKIP.Vote, -1) +
-                lag(UKIP.Articles, 1, lag=1) +
-                diff(UKIP.Articles, 1, lag=1) +
-              trend(UKIP.Vote),
+ecm.vote<-dynlm(diff(UKIP.Vote) ~
+                lag(UKIP.Vote, k=1) +
+                lag(UKIP.Articles, k=1) +
+                diff(UKIP.Articles, diff=1, lag=1) +
+              trend(UKIP.Vote) +
+               General.Elections +
+                  EU.Elections,
                 data=modelvars)
 # summary(ecm.vote)
 
