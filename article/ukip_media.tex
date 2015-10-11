@@ -269,37 +269,9 @@ variables drive each other, but that highly robust evidence of this in
 one model is not possible due to the nature of the data and the
 high-paramater demands of the VAR approach. \pagebreak
 
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-31.pdf}
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-32.pdf}
-
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-41.pdf}
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-42.pdf}
-
-\subsection{ECM}\label{ecm}
-
-Given the inherent limitations of the VAR approach, the error-correction
-model (ECM) is a natural alternative for a hypothesis of positive
-feedback. In short, an ECM models changes in a dependent variable as a
-function of lagged levels of the dependent variable (reflecting the rate
-of error correction or equilibration of the dependent variable) and
-changes as well as levels of an independent variable of interest
-(short-run and long-run effects, respectively). The ECM is also useful
-here because it allows for dependent and independent variables which are
-cointegrated. If media coverage and public support each drive each
-other, then we should find evidence of this in separate error-correction
-models for each variable. The results below show precisely this. Lagged
-changes and levels of each variable predict changes in the other
-variable with high degrees of statistical significance, suggesting a
-change in either variable is associated with an immediate change in the
-other variable and a long-run increase in the level of the other
-variable. This is precisely what we would expect in a relationship of
-positive feedback. All of the models pass the Durbin Watson test for
-serial correlation of errors and a t-test of Studentized residuals for
-the possibility of outliers. The first model passes the Breusch-Pagan
-test for heteroskedasticity; the second model does not pass the
-Breusch-Pagan test but the coefficients and standard errors do not
-change significantly from those displayed here after using White's
-heteroskedasticity-consistent covariance matrix.
+\% Table created by stargazer v.5.1 by Marek Hlavac, Harvard University.
+E-mail: hlavac at fas.harvard.edu \% Date and time: Sun, Oct 11, 2015 -
+16:34:09
 
 \begin{table}[!htbp] \centering 
   \caption{} 
@@ -309,212 +281,74 @@ heteroskedasticity-consistent covariance matrix.
 \hline \\[-1.8ex] 
  & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
 \cline{2-3} 
-\\[-1.8ex] & d(UKIP.Articles) & d(UKIP.Vote) \\ 
+\\[-1.8ex] & \multicolumn{2}{c}{y} \\ 
 \\[-1.8ex] & (1) & (2)\\ 
 \hline \\[-1.8ex] 
- lag(UKIP.Articles, -1) & $-$0.482$^{***}$ &  \\ 
-  & (0.070) &  \\ 
+ UKIP.Vote.l1 & $-$0.483$^{***}$ & $-$0.007 \\ 
+  & (0.106) & (0.105) \\ 
   & & \\ 
- lag(UKIP.Vote, 1, lag = 1) & 0.582$^{***}$ &  \\ 
-  & (0.123) &  \\ 
+ UKIP.Articles.l1 & 0.168$^{*}$ & $-$0.387$^{***}$ \\ 
+  & (0.095) & (0.094) \\ 
   & & \\ 
- diff(UKIP.Vote, 1, lag = 1) & 0.395$^{***}$ &  \\ 
-  & (0.137) &  \\ 
+ UKIP.Vote.l2 & $-$0.261$^{**}$ & $-$0.085 \\ 
+  & (0.103) & (0.102) \\ 
   & & \\ 
- trend(UKIP.Articles) & 0.003 &  \\ 
-  & (0.002) &  \\ 
+ UKIP.Articles.l2 & 0.160$^{*}$ & $-$0.341$^{***}$ \\ 
+  & (0.093) & (0.092) \\ 
   & & \\ 
- lag(UKIP.Vote, -1) &  & $-$0.395$^{***}$ \\ 
-  &  & (0.065) \\ 
+ UKIP.Vote.l3 & $-$0.111 & $-$0.088 \\ 
+  & (0.096) & (0.096) \\ 
   & & \\ 
- lag(UKIP.Articles, 1, lag = 1) &  & 0.163$^{***}$ \\ 
-  &  & (0.038) \\ 
+ UKIP.Articles.l3 & 0.161$^{*}$ & $-$0.196$^{**}$ \\ 
+  & (0.091) & (0.090) \\ 
   & & \\ 
- diff(UKIP.Articles, 1, lag = 1) &  & 0.105$^{**}$ \\ 
-  &  & (0.042) \\ 
+ const & 0.012 & 0.027 \\ 
+  & (0.080) & (0.079) \\ 
   & & \\ 
- trend(UKIP.Vote) &  & 0.002$^{*}$ \\ 
-  &  & (0.001) \\ 
+ trend & 0.00000 & $-$0.0002 \\ 
+  & (0.001) & (0.001) \\ 
   & & \\ 
- Constant & 1.481$^{***}$ & $-$0.517$^{***}$ \\ 
-  & (0.235) & (0.130) \\ 
+ General.Elections & $-$0.099 & 0.185 \\ 
+  & (0.273) & (0.271) \\ 
+  & & \\ 
+ EU.Elections & 0.465 & 0.894$^{***}$ \\ 
+  & (0.296) & (0.294) \\ 
   & & \\ 
 \hline \\[-1.8ex] 
-Observations & 133 & 133 \\ 
-R$^{2}$ & 0.366 & 0.326 \\ 
-Adjusted R$^{2}$ & 0.346 & 0.305 \\ 
-Residual Std. Error (df = 128) & 0.631 & 0.352 \\ 
-F Statistic (df = 4; 128) & 18.500$^{***}$ & 15.510$^{***}$ \\ 
+Observations & 137 & 137 \\ 
+R$^{2}$ & 0.148 & 0.233 \\ 
+Adjusted R$^{2}$ & 0.087 & 0.179 \\ 
+Residual Std. Error (df = 127) & 0.445 & 0.443 \\ 
+F Statistic (df = 9; 127) & 2.448$^{**}$ & 4.284$^{***}$ \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
 \end{tabular} 
 \end{table}
 
+\% Table created by stargazer v.5.1 by Marek Hlavac, Harvard University.
+E-mail: hlavac at fas.harvard.edu \% Date and time: Sun, Oct 11, 2015 -
+16:34:09
+
+\begin{table}[!htbp] \centering 
+  \caption{Granger Causality Tests} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}} ccc} 
+\\[-1.8ex]\hline \\[-1.8ex] 
+ & Support & Articles \\ 
+\hline \\[-1.8ex] 
+P-value & $0.750$ & $0.060$ \\ 
+DF1 & $3$ & $3$ \\ 
+DF2 & $254$ & $254$ \\ 
+F-test & $0.405$ & $2.499$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table}
+
+\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-61.pdf}
+\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-62.pdf}
+
 \pagebreak
-
-\begin{verbatim}
-## 
-## VAR Estimation Results:
-## ========================= 
-## Endogenous variables: UKIP.Articles, UKIP.Vote 
-## Deterministic variables: both 
-## Sample size: 131 
-## Log Likelihood: -184.541 
-## Roots of the characteristic polynomial:
-## 0.605 0.605 0.582 0.582 0.479 0.479
-## Call:
-## VAR(y = diffvars, type = "both", lag.max = 10, ic = "AIC")
-## 
-## 
-## Estimation results for equation UKIP.Articles: 
-## ============================================== 
-## UKIP.Articles = UKIP.Articles.l1 + UKIP.Vote.l1 + UKIP.Articles.l2 + UKIP.Vote.l2 + UKIP.Articles.l3 + UKIP.Vote.l3 + const + trend 
-## 
-##                   Estimate Std. Error t value Pr(>|t|)    
-## UKIP.Articles.l1 -0.361181   0.096140   -3.76  0.00026 ***
-## UKIP.Vote.l1      0.184839   0.172663    1.07  0.28648    
-## UKIP.Articles.l2 -0.342776   0.097313   -3.52  0.00060 ***
-## UKIP.Vote.l2     -0.086422   0.181688   -0.48  0.63516    
-## UKIP.Articles.l3 -0.214449   0.094362   -2.27  0.02478 *  
-## UKIP.Vote.l3     -0.112182   0.170214   -0.66  0.51109    
-## const             0.044084   0.129619    0.34  0.73436    
-## trend             0.000428   0.001645    0.26  0.79539    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## 
-## Residual standard error: 0.712 on 123 degrees of freedom
-## Multiple R-Squared: 0.184,   Adjusted R-squared: 0.138 
-## F-statistic: 3.97 on 7 and 123 DF,  p-value: 0.000605 
-## 
-## 
-## Estimation results for equation UKIP.Vote: 
-## ========================================== 
-## UKIP.Vote = UKIP.Articles.l1 + UKIP.Vote.l1 + UKIP.Articles.l2 + UKIP.Vote.l2 + UKIP.Articles.l3 + UKIP.Vote.l3 + const + trend 
-## 
-##                   Estimate Std. Error t value Pr(>|t|)    
-## UKIP.Articles.l1  0.105038   0.055237    1.90    0.060 .  
-## UKIP.Vote.l1     -0.408589   0.099203   -4.12  6.9e-05 ***
-## UKIP.Articles.l2  0.096074   0.055911    1.72    0.088 .  
-## UKIP.Vote.l2     -0.251028   0.104388   -2.40    0.018 *  
-## UKIP.Articles.l3  0.085342   0.054215    1.57    0.118    
-## UKIP.Vote.l3     -0.088077   0.097796   -0.90    0.370    
-## const             0.009881   0.074472    0.13    0.895    
-## trend             0.000162   0.000945    0.17    0.864    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## 
-## Residual standard error: 0.409 on 123 degrees of freedom
-## Multiple R-Squared: 0.129,   Adjusted R-squared: 0.079 
-## F-statistic: 2.59 on 7 and 123 DF,  p-value: 0.0157 
-## 
-## 
-## 
-## Covariance matrix of residuals:
-##               UKIP.Articles UKIP.Vote
-## UKIP.Articles         0.507     0.140
-## UKIP.Vote             0.140     0.167
-## 
-## Correlation matrix of residuals:
-##               UKIP.Articles UKIP.Vote
-## UKIP.Articles         1.000     0.482
-## UKIP.Vote             0.482     1.000
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## VAR Estimation Results:
-## ========================= 
-## Endogenous variables: UKIP.Articles, UKIP.Vote 
-## Deterministic variables: both 
-## Sample size: 131 
-## Log Likelihood: -158.491 
-## Roots of the characteristic polynomial:
-## 0.69 0.69 0.596 0.404 0.404 0.307
-## Call:
-## VAR(y = diffvars, type = "both", season = 12L, lag.max = 10, 
-##     ic = "AIC")
-## 
-## 
-## Estimation results for equation UKIP.Articles: 
-## ============================================== 
-## UKIP.Articles = UKIP.Articles.l1 + UKIP.Vote.l1 + UKIP.Articles.l2 + UKIP.Vote.l2 + UKIP.Articles.l3 + UKIP.Vote.l3 + const + trend + sd1 + sd2 + sd3 + sd4 + sd5 + sd6 + sd7 + sd8 + sd9 + sd10 + sd11 
-## 
-##                   Estimate Std. Error t value Pr(>|t|)    
-## UKIP.Articles.l1 -0.553388   0.102741   -5.39  4.0e-07 ***
-## UKIP.Vote.l1      0.397480   0.172407    2.31    0.023 *  
-## UKIP.Articles.l2 -0.448840   0.109289   -4.11  7.7e-05 ***
-## UKIP.Vote.l2      0.250204   0.187904    1.33    0.186    
-## UKIP.Articles.l3 -0.245201   0.100207   -2.45    0.016 *  
-## UKIP.Vote.l3      0.135564   0.173258    0.78    0.436    
-## const             0.057340   0.119606    0.48    0.633    
-## trend             0.000267   0.001520    0.18    0.861    
-## sd1              -0.082795   0.286185   -0.29    0.773    
-## sd2               0.260127   0.288265    0.90    0.369    
-## sd3               0.526146   0.288290    1.83    0.071 .  
-## sd4               0.695356   0.288482    2.41    0.018 *  
-## sd5              -0.153701   0.292212   -0.53    0.600    
-## sd6              -0.611966   0.293349   -2.09    0.039 *  
-## sd7              -0.630215   0.300718   -2.10    0.038 *  
-## sd8               0.071458   0.299959    0.24    0.812    
-## sd9               0.202142   0.289676    0.70    0.487    
-## sd10              0.111573   0.288612    0.39    0.700    
-## sd11              0.181855   0.289233    0.63    0.531    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## 
-## Residual standard error: 0.655 on 112 degrees of freedom
-## Multiple R-Squared: 0.371,   Adjusted R-squared: 0.27 
-## F-statistic: 3.67 on 18 and 112 DF,  p-value: 1.1e-05 
-## 
-## 
-## Estimation results for equation UKIP.Vote: 
-## ========================================== 
-## UKIP.Vote = UKIP.Articles.l1 + UKIP.Vote.l1 + UKIP.Articles.l2 + UKIP.Vote.l2 + UKIP.Articles.l3 + UKIP.Vote.l3 + const + trend + sd1 + sd2 + sd3 + sd4 + sd5 + sd6 + sd7 + sd8 + sd9 + sd10 + sd11 
-## 
-##                   Estimate Std. Error t value Pr(>|t|)    
-## UKIP.Articles.l1  0.059543   0.062763    0.95   0.3448    
-## UKIP.Vote.l1     -0.405605   0.105321   -3.85   0.0002 ***
-## UKIP.Articles.l2  0.066044   0.066763    0.99   0.3247    
-## UKIP.Vote.l2     -0.223278   0.114788   -1.95   0.0543 .  
-## UKIP.Articles.l3  0.051490   0.061215    0.84   0.4021    
-## UKIP.Vote.l3     -0.086371   0.105841   -0.82   0.4162    
-## const             0.004733   0.073066    0.06   0.9485    
-## trend             0.000305   0.000929    0.33   0.7434    
-## sd1              -0.174712   0.174826   -1.00   0.3198    
-## sd2               0.162045   0.176097    0.92   0.3594    
-## sd3               0.168527   0.176112    0.96   0.3407    
-## sd4               0.329795   0.176230    1.87   0.0639 .  
-## sd5               0.258714   0.178508    1.45   0.1500    
-## sd6              -0.000607   0.179202    0.00   0.9973    
-## sd7              -0.009899   0.183704   -0.05   0.9571    
-## sd8               0.043452   0.183241    0.24   0.8130    
-## sd9               0.010503   0.176959    0.06   0.9528    
-## sd10             -0.149452   0.176309   -0.85   0.3984    
-## sd11              0.157363   0.176688    0.89   0.3750    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## 
-## Residual standard error: 0.4 on 112 degrees of freedom
-## Multiple R-Squared: 0.24,    Adjusted R-squared: 0.118 
-## F-statistic: 1.97 on 18 and 112 DF,  p-value: 0.0171 
-## 
-## 
-## 
-## Covariance matrix of residuals:
-##               UKIP.Articles UKIP.Vote
-## UKIP.Articles         0.429     0.127
-## UKIP.Vote             0.127     0.160
-## 
-## Correlation matrix of residuals:
-##               UKIP.Articles UKIP.Vote
-## UKIP.Articles         1.000     0.483
-## UKIP.Vote             0.483     1.000
-\end{verbatim}
 
 \begin{figure}[htbp]
 \centering
