@@ -55,10 +55,6 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \setcounter{secnumdepth}{0}
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
 %%% Change title format to be more compact
 \usepackage{titling}
 \setlength{\droptitle}{-2em}
@@ -82,24 +78,51 @@ Drive Support for UKIP?}
 \maketitle
 
 
-This research note presents the first statistical time-series analysis
-testing the degree to which media coverage of UKIP is driven by public
-support for UKIP and/or vice versa. In particular, I gather monthly
-time-series of public support for UKIP from Ipsos MORI's voting
-intention polls and a monthly count of UKIP mentions in all UK National
-Newspapers (drawn from the databse Nexis). I begin with a series of
-econometric analyses to investigate whether media coverage drives
-support, support drives media coverage, or both. First,
-vector-autoregression (VAR) is used as a straightforward and relatively
-atheoretical way to document the stylized facts of the causal dynamics.
-Then, separate error-correction models are estimated as an alternative
-approach to the question making different assumptions. Finally, I
-provide a brief qualitative examination of the time-series. Both
-econometric techniques and the qualitative evidence converge on the
-conclusion that the relationship between public support and media
-coverage of UKIP is one of positive feedback: while public support is
-positively correlated with future levels of media coverage, media
-coverage is also independently correlated with future increases in
+\begin{abstract}
+Previous research suggests media attention may cause support for populist right-wing parties, but this finding is debated and extant evidence remains limited to proportional representation systems in which such an effect would be most likely. At the same time, in the United Kingdom's first-past-the-post system, an ongoing political and regulatory debate revolves around whether the media give disproportionate coverage to the populist right-wing UK Independence Party (UKIP). Thus, we use a mixed-methods approach to investigate the causal dynamics of UKIP support and media coverage as an especially valuable case. Vector autoregression (VAR) using monthly, aggregate time-series data from 2004 to September 2015 provides additional evidence, from a new and less-likely institutional environment, consistent with the model that media drive party support, but not vice-versa. Additionally, qualitative investigation of
+the dynamics suggests that in at least two key periods of stagnating or declining support for UKIP, media coverage increased and was followed by increases in public support. Overall the findings show that media coverage can and does
+appear to drive public support in a substantively important fashion irreducible
+to previous levels of public support.
+\end{abstract}
+\doublespacing
+
+\section{Introduction}\label{introduction}
+
+If the visibility of a political party in the media shapes the public
+support it receives, then the degree to which the media gives attention
+to different political parties can have significant implications for
+democracy. In the United Kingdom, critics allege that the media pays
+disproportionate attention to the populist, right-wing UK Independence
+Party (UKIP) but media elites claim that media coverage of UKIP is
+driven by increasing public support for the party. Descriptively, media
+attention to UKIP is greater than that given to other, similarly small
+parties on the right as well as the left (Goodwin and Ford, 2013;
+Stevenson, 2014; Soussi, 2014), but UK media regulator Ofcom as well as
+the BBC have publicly defended the attention paid to UKIP on grounds of
+public support for the party (Sweeney, 2015; Wintour, 2015). Implied in
+this elite reasoning is a causal model, namely that public support
+drives media coverage rather than vice-versa.
+
+Yet previous research from multiparty, proportional representation
+systems suggests that media coverage drives public support
+
+We present the first statistical time-series analysis testing the degree
+to which media coverage of UKIP is driven by public support for UKIP
+and/or vice versa. In particular, I gather monthly time-series of public
+support for UKIP from Ipsos MORI's voting intention polls and a monthly
+count of UKIP mentions in all UK National Newspapers (drawn from the
+databse Nexis). I begin with a series of econometric analyses to
+investigate whether media coverage drives support, support drives media
+coverage, or both. First, vector-autoregression (VAR) is used as a
+straightforward and relatively atheoretical way to document the stylized
+facts of the causal dynamics. Then, separate error-correction models are
+estimated as an alternative approach to the question making different
+assumptions. Finally, I provide a brief qualitative examination of the
+time-series. Both econometric techniques and the qualitative evidence
+converge on the conclusion that the relationship between public support
+and media coverage of UKIP is one of positive feedback: while public
+support is positively correlated with future levels of media coverage,
+media coverage is also independently correlated with future increases in
 public support. Qualitative exploration of these dynamics identify at
 least two key time periods in which support for UKIP was decreasing but
 media coverage increased and may have caused support for UKIP to
@@ -112,30 +135,17 @@ to maintain current levels of support.
 
 \pagebreak
 
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-11.pdf}
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-12.pdf}
+\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-1-1.pdf}
+\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-1-2.pdf}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-2.pdf}
+\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-2-1.pdf}
 \caption{Dynamics of UKIP Support and Media Coverage}
 \end{figure}
 
 \section{Background and Literature
 Review}\label{background-and-literature-review}
-
-Critics allege that the media pays disproportionate attention to UKIP
-but media elites claim that coverage of UKIP is driven by increasing
-public support for the party. It is widely argued in the popular press,
-by scholars as well as politicians, that the British media pays
-disproportionate attention to UKIP (Goodwin and Ford 2013; Stevenson
-2014; Soussi 2014). This is uncontroversial in the sense that the
-quantity of UKIP's media coverage is simply much greater than the
-coverage of other small parties on the right as well as the left
-(Goodwin and Ford 2013). Statements by UK media regulator Ofcom as well
-as the BBC suggest that UKIP deserves more coverage than other
-relatively small parties because of uniquely growing public support for
-UKIP (Sweeney 2015; Wintour 2015).
 
 The crucial and controversial question--and the motivation for this
 article--is whether the quantity of UKIP's media coverage represents a
@@ -144,61 +154,102 @@ media's fascination with UKIP is merely a reasonable or even healthy
 response to a newly rising political party. If disproportionate media
 coverage is not simply responsive to public opinion but effectively
 driving public opinion and shaping outcomes such as elections, as some
-argue (Soussi 2014), then clearly the media's disproportionate coverage
+argue (Soussi, 2014), then clearly the media's disproportionate coverage
 of UKIP is at best normatively problematic and at worst complicit in the
 legitimation and empowerment of what is alleged to be UKIP's coded
-racism and proto-fascism (Webb 2014; Syal 2015).
+racism and proto-fascism (Webb, 2014; Syal, 2015).
 
 While a great deal of research documents various aspects of the
 relationship between media and right-wing populist parties, little is
 known specifically about the effects of the quantity of party-specific
 media coverage on aggregate party support from a dynamic perspective.
 The closest previous research comes to this particular question is work
-by (Boomgaarden and Vliegenthart 2007; Boomgaarden and Vliegenthart
-2009), who find that greater media coverage of immigration issues is
-positively associated with support for anti-immigration parties. Other
-research has studied the dynamics of individual-level exposure to media
-coverage and perceptions of right-wing politicians (Bos, Brug, and
-Vreese 2011). Still, currently extant research tells us surprisingly
-little about the causal dynamics of public support and the quanitity of
-media coverage of right-wing populist parties. In part, this may be
-because the application of time-series techniques to aggregate media
-data remains relatively under-explored (Vliegenthart 2014).
+by (Boomgaarden and Vliegenthart, 2007, 2009), who find that greater
+media coverage of immigration issues is positively associated with
+support for anti-immigration parties. Other research has studied the
+dynamics of individual-level exposure to media coverage and perceptions
+of right-wing politicians (Bos et al., 2011). Still, currently extant
+research tells us surprisingly little about the causal dynamics of
+public support and the quanitity of media coverage of right-wing
+populist parties. In part, this may be because the application of
+time-series techniques to aggregate media data remains relatively
+under-explored (Vliegenthart, 2014a).
 
-\section{Hypotheses}\label{hypotheses}
+H1: Coverage drives support Most of the literature concerning the
+visibility-support nexus investigates the impact of media coverage on
+public opinion and electoral support. To our knowledge, this has only
+been studied in multi-party proportional systems such as Belgium
+(WALGRAVE and SWERT, 2004), the Netherlands and Germany (Boomgaarden and
+Vliegenthart, 2007; Vliegenthart and Boomgaarden, 2010; Vliegenthart et
+al., 2012). In all of these cases, however, the authors found a positive
+effect of media coverage on the intention to vote for right-wing and
+anti-immigration parties although some have called these findings into
+question on the basis of methodological concerns (Pauwels, 2010).
 
-Hypothesis 1: Public support for UKIP and media coverage of UKIP are
-characterized by positive feedback, wherein an increase in either
-variable leads to an increase in the other variable.
+Other scholars have addressed the question indirectly. In his study on
+the diffusion of the populist message in the media, (Rooduijn, 2014)
+hypothesises that the electoral success of populist parties affects the
+degree and acceptability of populism in the media. Other authors in the
+literature explore the theoretical connection of media coverage and the
+rise of populist and right-wing parties, but offer little or no
+empirical evidence for the claim (Art, 2007; Mudde, 2013). Nevertheless,
+there is a considerable body of literature which posits particular
+mechanisms which may offer a causal explanation for how the quantity of
+media coverage can increase support for a political party. The primary
+explanation revolves around issue saliency and the aligning of a party
+or a party leader with those salient issues (Brug et al., 2006; Cushion
+et al., 2015; Dennison and Goodwin, 2015). In the case of UKIP, the
+party was strongly aligned with the issue of immigration and the
+European Union, and the increasing prominence of these issues in the
+media drove both coverage and support for the party. (WALGRAVE and
+SWERT, 2004) offer a similar analysis of the Vlaams Blok in Belgium,
+concluding that the media are at least part responsible for the growth
+of the right-wing party. Although that study does conclude in support of
+this relationship, they do not commit themselves to arguing a causal
+relationship.
 
-\begin{itemize}
-\item
-  Hypothesis 1.A: Increases in public support for UKIP lead to increased
-  media coverage, controlling for previous levels of media coverage.
-\item
-  Hypothesis 1.B: Increases in media coverage lead to increased public
-  support, controlling for previous levels of public support.
-\end{itemize}
+H1: Increases in media coverage lead to increased public support,
+controlling for previous levels of public support.
 
-Hypothesis 3: Exogenous increases in media coverage (not preceded by
-increases in public support) have led to increases in public support.
+H2: Support drives coverage Alternatively, the causal arrow could run
+the other way, where the support that a party receives increases the
+amount of media coverage. As (Vliegenthart and Boomgaarden, 2010)
+consider, this could be related to the power and position of political
+figures, referencing studies from both America (Sellers and Schaffner,
+2007) and Switzerland (Tresch, 2009) which highlight how the standing of
+a political actor influences media attention. Another possibility is
+that media coverage depends on the dynamics of the party itself
+(Pauwels, 2010): in our case, the relative acceptability of UKIP's
+agenda as opposed to other British populist parties such as the British
+National Party may have contributed to the rise in coverage, as well as
+the popularity and charisma of Nigel Farage. Finally, political polling
+and the reporting of political polls is ubiquitous in British media,
+including tabloid papers running polls of their own readers. It could be
+the case that increasing media coverage is simply reflective of their
+standing in polls, or that there is a positive feedback mechanism
+operating between media coverage and polling. We therefore test this
+possibility, hypothesising that
+
+H2: Increases in public support for UKIP lead to increased media
+coverage, controlling for previous levels of media coverage
 
 \section{Data, Method, and Research
 Strategy}\label{data-method-and-research-strategy}
 
 To measure public support for UKIP, I gathered monthly aggregate polling
-data on vote intentions from Ipsos MORI (Ipsos-MORI). Specifically, I
-constructed a variable from the percentage reporting an intention to
-vote for UKIP according to the Ipsos MORI poll closest to the middle of
-each month. For most months, this was straightforward because the Ipsos
-MORI poll is approximately monthly. For months with multiple polls, I
-used the poll closest to the middle of the month. For the very few
-months with no poll or a poll at the border between the previous or
-following month, the value was counted as missing and then all missing
-values were linearly interpolated. To measure media coverage of UKIP, I
-gathered monthly counts of all UK national newspaper reports mentioning
-either ``UKIP'' or ``UK Independence Party'' from the database Nexis
-(``Nexis'').\footnote{Duplicate articles defined by Nexis's definition of high similarity were excluded.}
+data on vote intentions from Ipsos MORI (Ipsos-MORI, n.d.).
+Specifically, I constructed a variable from the percentage reporting an
+intention to vote for UKIP according to the Ipsos MORI poll closest to
+the middle of each month. For most months, this was straightforward
+because the Ipsos MORI poll is approximately monthly. For months with
+multiple polls, I used the poll closest to the middle of the month. For
+the very few months with no poll or a poll at the border between the
+previous or following month, the value was counted as missing and then
+all missing values were linearly interpolated. To measure media coverage
+of UKIP, I gathered monthly counts of all UK national newspaper reports
+mentioning either ``UKIP'' or ``UK Independence Party'' from the
+database Nexis (Anon.,
+n.d.).\footnote{Duplicate articles defined by Nexis's definition of high similarity were excluded.}
 
 Econometric techniques are used to test for, and distinguish the
 ordering of, potential causal dynamics between media coverage and public
@@ -270,8 +321,8 @@ one model is not possible due to the nature of the data and the
 high-paramater demands of the VAR approach. \pagebreak
 
 \% Table created by stargazer v.5.1 by Marek Hlavac, Harvard University.
-E-mail: hlavac at fas.harvard.edu \% Date and time: Sun, Oct 11, 2015 -
-16:34:09
+E-mail: hlavac at fas.harvard.edu \% Date and time: Mon, Oct 12, 2015 -
+17:40:12
 
 \begin{table}[!htbp] \centering 
   \caption{} 
@@ -284,23 +335,23 @@ E-mail: hlavac at fas.harvard.edu \% Date and time: Sun, Oct 11, 2015 -
 \\[-1.8ex] & \multicolumn{2}{c}{y} \\ 
 \\[-1.8ex] & (1) & (2)\\ 
 \hline \\[-1.8ex] 
- UKIP.Vote.l1 & $-$0.483$^{***}$ & $-$0.007 \\ 
-  & (0.106) & (0.105) \\ 
-  & & \\ 
  UKIP.Articles.l1 & 0.168$^{*}$ & $-$0.387$^{***}$ \\ 
   & (0.095) & (0.094) \\ 
   & & \\ 
- UKIP.Vote.l2 & $-$0.261$^{**}$ & $-$0.085 \\ 
-  & (0.103) & (0.102) \\ 
+ UKIP.Vote.l1 & $-$0.483$^{***}$ & $-$0.007 \\ 
+  & (0.106) & (0.105) \\ 
   & & \\ 
  UKIP.Articles.l2 & 0.160$^{*}$ & $-$0.341$^{***}$ \\ 
   & (0.093) & (0.092) \\ 
   & & \\ 
- UKIP.Vote.l3 & $-$0.111 & $-$0.088 \\ 
-  & (0.096) & (0.096) \\ 
+ UKIP.Vote.l2 & $-$0.261$^{**}$ & $-$0.085 \\ 
+  & (0.103) & (0.102) \\ 
   & & \\ 
  UKIP.Articles.l3 & 0.161$^{*}$ & $-$0.196$^{**}$ \\ 
   & (0.091) & (0.090) \\ 
+  & & \\ 
+ UKIP.Vote.l3 & $-$0.111 & $-$0.088 \\ 
+  & (0.096) & (0.096) \\ 
   & & \\ 
  const & 0.012 & 0.027 \\ 
   & (0.080) & (0.079) \\ 
@@ -327,8 +378,8 @@ F Statistic (df = 9; 127) & 2.448$^{**}$ & 4.284$^{***}$ \\
 \end{table}
 
 \% Table created by stargazer v.5.1 by Marek Hlavac, Harvard University.
-E-mail: hlavac at fas.harvard.edu \% Date and time: Sun, Oct 11, 2015 -
-16:34:09
+E-mail: hlavac at fas.harvard.edu \% Date and time: Mon, Oct 12, 2015 -
+17:40:13
 
 \begin{table}[!htbp] \centering 
   \caption{Granger Causality Tests} 
@@ -345,68 +396,202 @@ F-test & $0.405$ & $2.499$ \\
 \end{tabular} 
 \end{table}
 
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-61.pdf}
-\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-62.pdf}
+\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-6-1.pdf}
+\includegraphics{ukip_media_files/figure-latex/unnamed-chunk-6-2.pdf}
+
+\section{Process-tracing}\label{process-tracing}
+
+\section{This paper has investigated a simple claim by the UK's
+regulatory authorities and national broadcaster: that the increased
+media coverage of UKIP was justified by the party's increased poll
+ratings. We have found that, on the contrary, on average media coverage
+preceded an increase in poll ratings controlling for previous media
+coverage, rather than media coverage increasing controlling for previous
+public support. {[}some stuff on
+findings{]}.}\label{this-paper-has-investigated-a-simple-claim-by-the-uks-regulatory-authorities-and-national-broadcaster-that-the-increased-media-coverage-of-ukip-was-justified-by-the-partys-increased-poll-ratings.-we-have-found-that-on-the-contrary-on-average-media-coverage-preceded-an-increase-in-poll-ratings-controlling-for-previous-media-coverage-rather-than-media-coverage-increasing-controlling-for-previous-public-support.-some-stuff-on-findings.}
+
+We have made three contributions with this study. Firstly, this is the
+first paper, in our knowledge, to address the visibility-support nexus
+in the context of the United Kingdom and a majoritarian system; previous
+research has primarily focused on other Western European democracies
+such as Belgium, the Netherlands and Germany. Despite the change in
+political system, our findings support those of (Vliegenthart and
+Boomgaarden, 2010; Vliegenthart et al., 2012), and find that the media
+can and have independently generated support for UKIP. We have left
+aside the question of leader effects, given previously ambiguous
+findings. There is also reason to believe that media dynamics are
+different in proportional systems, being more diverse in their coverage
+than in majoritarian systems ({\textbf{???}}).
+
+Secondly, we have also contributed methodologically in two ways. We have
+offered qualitative evidence for our findings that, at least in this
+case, the media have generated support for a radical right-wing party.
+Previous research has offered only statistical evidence, which may not
+pick up questions relating to the historical narrative of the party in
+question. We address this gap here and find that the results are still
+robust. We have also contributed to a growing body of literature that
+uses time-series methods to address questions relating to the media
+(Vliegenthart, 2014b).
+
+Perhaps most importantly, these findings are of significance to
+contemporary public debate in the UK concerning the role of the media
+and the perceived unfair coverage of UKIP. Some have argued that the
+media coverage of UKIP is justified due to its public support. The
+findings here, on the other hand, suggest that the causal arrow points
+the other way: that the media coverage drove the support of UKIP
+independent of its previous poll ratings. As with all studies, there are
+limitations and areas for future research. Firstly, we do not undertake
+any form of content analysis to get at the actual content of the
+coverage in question, but only look at the quantity of articles. It is
+possible that, by disaggregating the coverage further, different types
+of coverage change the findings; it would also be interesting to see
+whether how positive or negative the coverage is matters for changing
+public opinion. Similarly, we do not disaggregate between types of
+paper, such as broadsheet and tabloid, which offer different coverage
+and target a different readership.
+
+We also only focus on print media. This means that we have not accounted
+for the effect of visual and social media which may be contributing to
+this relationship. Despite these limitations, this paper provides a
+contribution to the continuing and growing debate concerning the media's
+role in the growth of political parties and the wider ramifications for
+democratic debate.
 
 \pagebreak
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{ukip_media_files/figure-latex/supplementary.pdf}
-\caption{plot of chunk supplementary}
+\includegraphics{ukip_media_files/figure-latex/supplementary-1.pdf}
+\caption{}
 \end{figure}
 
 \pagebreak
 
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{References}
+\section{References}\label{references}
 
-Boomgaarden, Hajo G, and Rens Vliegenthart. 2007. ``Explaining the Rise
-of Anti-Immigrant Parties: The Role of News Media Content.''
-\emph{Electoral Studies} 26 (2): 404--17.
+\raggedright
 
----------. 2009. ``How News Content Influences Anti-Immigration
-Attitudes: Germany, 19932005.'' \emph{European Journal of Political
-Research} 48 (4): 516--42.
+Anon. (n.d.) ``Nexis.''
 
-Bos, Linda, Wouter van der Brug, and Claes de Vreese. 2011. ``How the
+Art, David. (2007) ``Reacting to the Radical Right Lessons from Germany
+and Austria.'' \emph{Party Politics} 13:331--349.
+\url{http://ppq.sagepub.com/content/13/3/331} (Accessed October 10,
+2015).
+
+Boomgaarden, Hajo G, and Rens Vliegenthart. (2007) ``Explaining the rise
+of anti-immigrant parties: The role of news media content.''
+\emph{Electoral Studies} 26:404--417.
+
+Boomgaarden, Hajo G, and Rens Vliegenthart. (2009) ``How news content
+influences anti-immigration attitudes: Germany, 19932005.''
+\emph{European Journal of Political Research} 48:516--542.
+
+Bos, Linda, Wouter van der Brug, and Claes de Vreese. (2011) ``How the
 Media Shape Perceptions of Right-Wing Populist Leaders.''
-\emph{Political Communication} 28 (2): 182--206.
+\emph{Political Communication} 28:182--206.
 
-Goodwin, Matthew, and Robert Ford. 2013. ``Just How Much Media Coverage
-Does UKIP Get?''
+Brug, Wouter van der, Holli A. Semetko, and Patti M. Valkenburg. (2006)
+``Media Priming in a Multi-Party Context: A Controlled Naturalistic
+Study in Political Communication.'' \emph{Political Behavior}
+29:115--141.
+\url{http://link.springer.com/article/10.1007/s11109-006-9020-7}
+(Accessed October 3, 2015).
+
+Cushion, Stephen, Richard Thomas, and Oliver Ellis. (2015)
+``Interpreting UKIP's `Earthquake' in British Politics: UK Television
+News Coverage of the 2009 and 2014 EU Election Campaigns.'' \emph{The
+Political Quarterly} 86:314--322.
+\url{http://onlinelibrary.wiley.com/doi/10.1111/1467-923X.12169/abstract}
+(Accessed October 1, 2015).
+
+Dennison, James, and Matthew Goodwin. (2015) ``Immigration, Issue
+Ownership and the Rise of UKIP.'' \emph{Parliamentary Affairs}
+68:168--187. \url{http://pa.oxfordjournals.org/content/68/suppl_1/168}
+(Accessed October 1, 2015).
+
+Goodwin, Matthew, and Robert Ford. (2013) ``Just how much media coverage
+does UKIP get?'' \emph{New Statesman}.
 \url{http://www.newstatesman.com/politics/2013/11/just-how-much-media-coverage-does-ukip-get}.
 
-Ipsos-MORI. ``Voting Intention in Great Britain: Recent Trends.''
+Ipsos-MORI. (n.d.) ``Voting Intention in Great Britain: Recent Trends.''
 \url{https://www.ipsos-mori.com/researchpublications/researcharchive/poll.aspx?oItemId=107\&view=wide}.
 
-``Nexis.''
+Mudde, Cas. (2013) ``Three decades of populist radical right parties in
+Western Europe: So what?'' \emph{European Journal of Political Research}
+52:1--19.
 
-Soussi, Alasdair. 2014. ``Did British Media Help the UKIP Win EU Poll?''
+Pauwels, Teun. (2010) ``Reassessing conceptualization, data and
+causality: A critique of Boomgaarden and Vliegenthart's study on the
+relationship between media and the rise of anti-immigrant parties.''
+\emph{Electoral Studies} 29:269--275.
+\url{http://www.sciencedirect.com/science/article/pii/S0261379410000120}
+(Accessed October 10, 2015).
+
+Rooduijn, Matthijs. (2014) ``The Mesmerising Message: The Diffusion of
+Populism in Public Debates in Western European Media.'' \emph{Political
+Studies} 62:726--744.
+\url{http://onlinelibrary.wiley.com/doi/10.1111/1467-9248.12074/abstract}
+(Accessed October 2, 2015).
+
+Sellers, Patrick J., and Brian F. Schaffner. (2007) ``Winning Coverage
+in the U.S. Senate.'' \emph{Political Communication} 24:377--391.
+\url{http://dx.doi.org/10.1080/10584600701641516} (Accessed October 11,
+2015).
+
+Soussi, Alasdair. (2014) ``Did British media help the UKIP win EU
+poll?''
 \url{http://www.aljazeera.com/indepth/features/2014/06/did-british-media-help-ukip-win-eu-poll-20146313346918679.html}.
 
-Stevenson, Alex. 2014. ``Caroline Lucas Points Finger at Media's Farage
-Obsession.''
+Stevenson, Alex. (2014) ``Caroline Lucas points finger at media's Farage
+obsession.''
 \url{http://www.politics.co.uk/news/2014/05/29/ukip-victory-caroline-lucas-points-finger-at-media-s-farage}.
 
-Sweeney, Mark. 2015. ``BBC Prepares to Boost Ukip Coverage as It Ranks
-It a Larger Party in Election.''
+Sweeney, Mark. (2015) ``BBC prepares to boost Ukip coverage as it ranks
+it a larger party in election.''
 \url{http://www.theguardian.com/media/2015/jan/15/bbc-prepares-to-boost-ukip-coverage-as-it-ranks-it-a-larger-party-in-election}.
 
-Syal, Rajeev. 2015. ``Ukip Faces Crisis After Suspensions and Racism
-Claims.''
+Syal, Rajeev. (2015) ``Ukip faces crisis after suspensions and racism
+claims.''
 \url{http://www.theguardian.com/politics/2015/mar/20/ukip-faces-crisis-two-parliamentary-candidates-suspended-one-resigns}.
 
-Vliegenthart, Rens. 2014. ``Moving up. Applying Aggregate Level Time
-Series Analysis in the Study of Media Coverage.'' \emph{Quality \&
-Quantity} 48 (5): 2427--45.
+Tresch, Anke. (2009) ``Politicians in the Media: Determinants of
+Legislators' Presence and Prominence in Swiss Newspapers.'' \emph{The
+International Journal of Press/Politics} 14:67--90.
+\url{http://hij.sagepub.com/content/14/1/67} (Accessed October 11,
+2015).
 
-Webb, Robert. 2014. ``Ukip Trades in the Language of Fear and Division.
-The Left Must Not Humour Its Anti-Politics Crusade.''
+Vliegenthart, Rens. (2014a) ``Moving up. Applying aggregate level time
+series analysis in the study of media coverage.'' \emph{Quality \&
+Quantity} 48:2427--2445.
+
+Vliegenthart, Rens. (2014b) ``Moving up. Applying aggregate level time
+series analysis in the study of media coverage.'' \emph{Quality \&
+Quantity} 48:2427--2445.
+
+Vliegenthart, Rens, and Hajo G. Boomgaarden. (2010) ``Why the media
+matter after all: A response to Pauwels.'' \emph{Electoral Studies}
+29:719--723.
+\url{http://www.sciencedirect.com/science/article/pii/S0261379410000855}
+(Accessed October 11, 2015).
+
+Vliegenthart, Rens, Hajo G. Boomgaarden, and Joost Van Spanje. (2012)
+``Anti-Immigrant Party Support and Media Visibility: A Cross-Party,
+Over-Time Perspective.'' \emph{Journal of Elections, Public Opinion and
+Parties} 22:315--358.
+\url{http://dx.doi.org/10.1080/17457289.2012.693933} (Accessed October
+10, 2015).
+
+WALGRAVE, STEFAAN, and KNUT DE SWERT. (2004) ``The Making of the (Issues
+of the) Vlaams Blok.'' \emph{Political Communication} 21:479--500.
+\url{http://dx.doi.org/10.1080/10584600490522743} (Accessed October 10,
+2015).
+
+Webb, Robert. (2014) ``Ukip trades in the language of fear and division.
+The left must not humour its anti-politics crusade.''
 \url{http://www.newstatesman.com/politics/2014/05/ukip-trades-language-fear-and-division-left-must-not-humour-its-anti-politics}.
 
-Wintour, Patrick. 2015. ``Ofcom Deals Blow to Greens Election Debate
-Hopes but Boosts Ukips.''
+Wintour, Patrick. (2015) ``Ofcom deals blow to Greens election debate
+hopes but boosts Ukips.''
 \url{http://www.theguardian.com/politics/2015/jan/08/ofcom-blow-green-party-election-debate-boost-ukips}.
 
 \end{document}
