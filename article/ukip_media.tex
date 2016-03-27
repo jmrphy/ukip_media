@@ -9,10 +9,11 @@
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
   \else
     \usepackage{fontspec}
   \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newcommand{\euro}{€}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
@@ -23,27 +24,22 @@
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 \usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
-\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-\hypersetup{unicode=true,
-            pdftitle={Does Public Support for UKIP Drive Their Media Coverage or Does Media Coverage Drive Support for UKIP?},
-            pdfauthor={Justin Murphy; Daniel Devine},
-            colorlinks=true,
-            linkcolor=blue,
-            citecolor=Blue,
-            urlcolor=Blue,
-            breaklinks=true}
-            
-            \hypersetup{breaklinks=true,
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
             bookmarks=true,
-            pdfauthor={},
-            pdftitle={Is the Tea Party Libertarian, Authoritarian, or Something Else?},
+            pdfauthor={Justin Murphy; Daniel Devine},
+            pdftitle={Does Public Support for UKIP Drive Their Media Coverage or Does Media Coverage Drive Support for UKIP?},
             colorlinks=true,
-            citecolor=black,
-            urlcolor=red,
-            linkcolor=black,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=blue,
             pdfborder={0 0 0}}
-
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -85,7 +81,6 @@ Coverage Drive Support for UKIP?}
   \postauthor{\par}
   \date{}
   \predate{}\postdate{}
-
 
 \usepackage{dcolumn}
 \usepackage{setspace}
@@ -254,11 +249,11 @@ In line with this current of research, British media and media
 regulators have publicly argued media coverage given to political
 parties is based on public support for the parties. In its draft
 electoral guidelines published in January 2015, the BBC classified UKIP
-as deserving a degree of coverage comparable to the ``larger parties,''
+as deserving a degree of coverage comparable to the âlarger parties,"
 because they ``demonstrated a substantial increase in electoral
-support,'' as measured by electoral and polling results, between 2010
+support,â as measured by electoral and polling results, between 2010
 and 2015 (Sweeney, 2015; BBC, 2015). Ofcom, the UK broadcast regulator,
-also included UKIP as a ``major party'' for the purposes of the 2015
+also included UKIP as a''major party" for the purposes of the 2015
 General Election and local elections in England and Wales (Ofcom, 2015),
 also explicitly on the grounds of improving electoral and polling
 results since 2010 (Wintour, 2015). Based on this current of previous
@@ -304,9 +299,17 @@ converage (i.e., the number of articles each month).
 
 \setlength\parindent{0pt}
 
+\begin{figure}[htbp]
+\centering
 \includegraphics{ukip_media_files/figure-latex/unnamed-chunk-1-1.pdf}
+\caption{}
+\end{figure}
 
+\begin{figure}[htbp]
+\centering
 \includegraphics{ukip_media_files/figure-latex/unnamed-chunk-2-1.pdf}
+\caption{}
+\end{figure}
 
 \begin{figure}[htbp]
 \centering
@@ -368,13 +371,13 @@ VAR by OLS per equation, using the following form:
 
 \begin{equation}
  \label{eq:VAR}
-    y_t = A_1 y_{t-1} + … + A_p y_{t-p} + D_t + u_t
+    y_t = A_1 y_{t-1} + â¦ + A_p y_{t-p} + D_t + u_t
 \end{equation}
 
 where \(y_t\) is a \(K \times 1\) vector of endogenous variables and
 \(u_t\) is the error term. In our case the endogenous variables are
 \emph{Support} and \emph{Articles}. The coefficient matrices \(A_1\),
-\ldots{}, \(A_p\) are of dimension \(K \times K\). By convention \(p\)
+â¦, \(A_p\) are of dimension \(K \times K\). By convention \(p\)
 denotes the ``order'' of the VAR, or the number of lags used. Typically
 this is determined empirically, as we do below. In addition, \(D_t\)
 refers to a vector of exogenous regressors. In our case the exogenous
@@ -386,7 +389,7 @@ endogenous variables \(y_t\) is divided into two vectors \(y_1t\) and
 \(y_2t\) of dimensionality (\(K_1 \times 1\)) and (\(K_2 \times 1\))
 with \(K = K_1 + K_2\) (Pfaff, 2008). The null hypothesis is that no
 lags of variable \(y_{1t}\) are significant in the equation for variable
-\({y}_{2t}\). If \(\alpha_{21, i} = 0\) for \(i = 1\), \(2\), \ldots{},
+\({y}_{2t}\). If \(\alpha_{21, i} = 0\) for \(i = 1\), \(2\), â¦,
 \(p\), we say that \(y_{1t}\) does not ``Granger-cause'' \(y_{2t}\).
 
 Additionally, a brief qualitative historical analysis of the dynamics is
@@ -454,42 +457,42 @@ Information).
  & $\Delta Support$ & $\Delta Articles$ \\ 
 \\[-1.8ex] & (1) & (2)\\ 
 \hline \\[-1.8ex] 
- $\Delta Articles_{t-1}$ & 0.200$^{*}$ & $-$0.300$^{***}$ \\ 
-  & (0.110) & (0.096) \\ 
+ $\Delta Articles_{t-1}$ & 0.210$^{**}$ & $-$0.300$^{***}$ \\ 
+  & (0.110) & (0.095) \\ 
   & & \\ 
- $\Delta Support_{t-1}$ & $-$0.440$^{***}$ & 0.023 \\ 
-  & (0.098) & (0.089) \\ 
+ $\Delta Support_{t-1}$ & $-$0.460$^{***}$ & 0.019 \\ 
+  & (0.096) & (0.086) \\ 
   & & \\ 
  $\Delta Articles_{t-2}$ & 0.180$^{**}$ & $-$0.260$^{***}$ \\ 
-  & (0.093) & (0.085) \\ 
+  & (0.093) & (0.083) \\ 
   & & \\ 
- $\Delta Support_{t-2}$ & $-$0.250$^{**}$ & $-$0.083 \\ 
-  & (0.100) & (0.092) \\ 
+ $\Delta Support_{t-2}$ & $-$0.260$^{**}$ & $-$0.081 \\ 
+  & (0.100) & (0.090) \\ 
   & & \\ 
- $\Delta Articles_{t-3}$ & 0.180$^{**}$ & $-$0.110 \\ 
-  & (0.092) & (0.084) \\ 
+ $\Delta Articles_{t-3}$ & 0.180$^{**}$ & $-$0.100 \\ 
+  & (0.092) & (0.082) \\ 
   & & \\ 
- $\Delta Support_{t-3}$ & $-$0.089 & $-$0.062 \\ 
-  & (0.095) & (0.086) \\ 
+ $\Delta Support_{t-3}$ & $-$0.080 & $-$0.063 \\ 
+  & (0.094) & (0.084) \\ 
   & & \\ 
- Constant & 0.019 & 0.041 \\ 
-  & (0.079) & (0.072) \\ 
+ Constant & 0.015 & 0.039 \\ 
+  & (0.077) & (0.069) \\ 
   & & \\ 
- Trend & $-$0.00003 & $-$0.0002 \\ 
+ Trend & 0.00004 & $-$0.0001 \\ 
   & (0.001) & (0.001) \\ 
   & & \\ 
- General Elections & 0.110$^{*}$ & 0.340$^{***}$ \\ 
-  & (0.060) & (0.055) \\ 
+ General Elections & 0.120$^{*}$ & 0.330$^{***}$ \\ 
+  & (0.059) & (0.053) \\ 
   & & \\ 
- EU Elections & 0.016 & 0.092 \\ 
-  & (0.068) & (0.061) \\ 
+ EU Elections & 0.016 & 0.090 \\ 
+  & (0.066) & (0.059) \\ 
   & & \\ 
 \hline \\[-1.8ex] 
-Observations & 137 & 137 \\ 
-R$^{2}$ & 0.150 & 0.370 \\ 
-Adjusted R$^{2}$ & 0.093 & 0.320 \\ 
-Residual Std. Error (df = 127) & 0.440 & 0.400 \\ 
-F Statistic (df = 9; 127) & 2.500$^{**}$ & 8.200$^{***}$ \\ 
+Observations & 141 & 141 \\ 
+R$^{2}$ & 0.160 & 0.370 \\ 
+Adjusted R$^{2}$ & 0.100 & 0.320 \\ 
+Residual Std. Error (df = 131) & 0.440 & 0.390 \\ 
+F Statistic (df = 9; 131) & 2.800$^{***}$ & 8.500$^{***}$ \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
@@ -530,10 +533,10 @@ media coverage Granger-causes public support and not vice-versa.
 \\[-1.8ex]\hline \\[-1.8ex] 
  & Support & Articles \\ 
 \hline \\[-1.8ex] 
-P-value & $0.037$ & $0.730$ \\ 
+P-value & $0.034$ & $0.740$ \\ 
 DF1 & $3$ & $3$ \\ 
-DF2 & $254$ & $254$ \\ 
-F-test & $2.900$ & $0.430$ \\ 
+DF2 & $262$ & $262$ \\ 
+F-test & $2.900$ & $0.420$ \\ 
 \hline \\[-1.8ex] 
 \end{tabular} 
 \end{table}
@@ -586,19 +589,20 @@ significance of the statistical evidence may either be better
 illustrated or possibly discounted due to untheorized contingencies.
 Based on our preliminary explorations summarized in Figure 2, we focus
 especially on two key periods: from July to September of 2012, and the
-second half of 2013.
+second half of 2013. We begin, however, with a brief history of the rise
+of UKIP.
 
 UKIP, formed in 1993, began fielding European parliamentary candidates
 in 1994 and British parliamentary candidates in 1997. Since then, the
 party has enjoyed mixed but notable increases in public support and in
 electoral outcomes, particularly in the European parliament where the
 party was the largest in the 2014 election. Until the 2015 general
-election, UKIP's domestic electoral success had been much less
+election, UKIPâs domestic electoral success had been much less
 impressive, receiving just 3.1\% of the vote in 2010. Like other small
 or new parties, it has a history of infighting, changes of direction and
 leadership, and problems with financial mismanagement (Whitaker and
 Lynch, 2011). As recently as 2011, a lack of media attention was cited
-as a factor in UKIP's poor performance, as well as credibility and
+as a factor in UKIPâs poor performance, as well as credibility and
 relatively few activists (Ford et al., 2012). Indeed, the historical
 pattern of both media coverage and public support for UKIP over much of
 its recent history, from 2004 to 2009, was a series of small increases
@@ -615,7 +619,7 @@ would be expected if coverage was driven by public opinion: Figure 2
 indicates no bias or exogenous increases of support in this instance.
 Following this, both coverage and support decay and return to poltically
 negligible levels. Over the next eight years, there are a range of
-events that do no attract very much media attention or public support;
+events that do not attract very much media attention or public support;
 indeed, events occur between these years that are similar to those that
 will occur in later years but they fail to generate the extraordinary
 media attention gained by such events in later years. The vast majority
@@ -624,23 +628,27 @@ results, or else it is negative, regarding claims of fraud and
 infighting. Indeed, Figure 2 shows that this period was characterised by
 exogenous increases of support not tracked by media coverage, supporting
 the claim that a lack of media coverage failed to facilitate public
-support through this period (Ford et al., 2012).
+support through this period (Ford et al., 2012). In some ways, the
+identification of the two series following each other without any `bias'
+and of exogenous increases of support gives us some confidence in the
+findings of bias discussed earlier.
 
 Apart from the 2005 election, in which UKIP received little coverage and
-performed poorly (Anon, 2005; Morris, 2005), UKIP saw little change in
-public support or media coverage until the European elections of 2009.
-There is a small boost in both support and coverage in April 2006, when
-David Cameron calls the party `fruitcakes, loonies' and `closet racists'
-(White and Watt, 2006). Interestingly, this rise in media coverage was
-followed by a small but sustained boost in public support, which
-persisted for three months. In April 2008, Conservative MP Bob Spink
-defected, giving UKIP their first MP which generated very little
-coverage, despite being called a coup (Winnett and Prince, 2008). Even
-the European election in 2009, in which UKIP came in second place,
-generated far less coverage than the 2005 European election, where the
-party came in third place. Despite this, it was still hailed as a
-`political earthquake' (Watt and Taylor, 2009) and garnered coverage for
-UKIP's leader Nigel Farage.
+performed poorly (receiving just 149 articles in that month) (Anon.,
+2005; Morris, 2005), UKIP saw little change in public support or media
+coverage until the European elections of 2009. There is a small boost in
+both support and coverage in April 2006, when David Cameron calls the
+party âfruitcakes, looniesâ and âcloset racistsâ (White and
+Watt, 2006). Interestingly, this rise in media coverage was followed by
+a small but sustained boost in public support, which persisted for three
+months. In April 2008, Conservative MP Bob Spink defected, giving UKIP
+their first MP which generated very little coverage, despite being
+called a coup (Winnett and Prince, 2008). Even the European election in
+2009, in which UKIP came in second place, generated far less coverage
+than the 2005 European election, where the party came in third place
+(829 to 320 articles in a month, respectively). Despite this, it was
+still hailed as a âpolitical earthquakeâ (Watt and Taylor, 2009) and
+garnered coverage for UKIPâs leader Nigel Farage.
 
 \begin{figure}[htbp]
 \centering
@@ -660,17 +668,21 @@ both precedes and seems unrelated to UKIP's public support, which may
 then have generated further increases in popular support (Murphy, 2015).
 To aid our investigation, we refer to Figure 5, which shows Figure 4 at
 higher resolution for the months between May 2012 and January 2014. This
-period includes a by-election in Corby, followed by the UKIP party
-conference and a controversial Rotherham by-election (Wainwright, 2012).
-In July 2012 UKIP's public support was unremarkably near its average and
-was declining from June, after it had been stagnant since May. But media
-coverage held relatively steady, slightly decreasing once but slightly
-increasing twice (and slightly increasing overall) from June to
-September. It is only at this point that public support increases
-notably from September to October and is followed by a spike in media
-coverage that likely represented a moment of positive feedback ending in
-the first truly significant rise of UKIP into mainstream public
-consciousness.
+period includes a three by-elections (Corby, Middlesborough and
+Rotherham), with many being controversial (Wainwright, 2012), as well as
+the UKIP party conference. All three of these by-elections occurred in
+November 2012, and UKIP placed second in two and third in Corby, with
+the Rotherham by- election's 21\% vote share being the party's highest
+up to that point. In July 2012 UKIP's public support was unremarkably
+near its average and was declining from June, after it had been stagnant
+since May. But media coverage held relatively steady, slightly
+decreasing once but slightly increasing twice (and slightly increasing
+overall) from June to September, from 123 to 261 articles. It is only at
+this point that public support increases notably from September to
+October and is followed by a spike in media coverage that likely
+represented a moment of positive feedback ending in the first truly
+significant rise of UKIP into mainstream public consciousness - up to
+15\% support in April 2013.
 
 Between August and November 2012, the amount of articles covering UKIP
 increased from 198 to 948, the most they had ever received in one month
@@ -709,32 +721,33 @@ Hypothesis 1.
 
 Now consider the period between July 2013 and December 2014. Despite
 public support declining rapidly and steadily from its high point in
-April 2013, media coverage from July to August increases. Public support
-continues to decline through August until November. While media coverage
-appears to adjust dynamically downward after it's ``uncaused'' increase
-of August, yet again in November media coverage stabilizes and slightly
-increases. It is only at this point in November that support ends its
-long and steady decline and yet again begins another substantial
-increase until it returns back to the high levels of April 2013. Again,
-in these two months we identify apparently minor but potentially crucial
-non-dynamically-responsive levels of media coverage which may be
-functioning as a floor preventing support from continuing to decline and
-making possible the surge beginning from November 2013. While of course
-these spikes and drops in support may just be volatility around UKIP's
-new, higher mean levels of support, the key point here is only to
-explore and give possible instances of the statistical findings. Unlike
-the previous instance of ``bias'' explored above, where political events
-such as by-elections and the party conference season may have played
-roles, in this case there are no obvious and directly party-related
-events shaping the dynamics in this period. However, one key event which
-may have played a role at this time is the lifting of work restrictions
-on Romanian and Bulgarian nationals which occurred in January 2014
-(Martin, 2013), with media coverage intensifying in the months leading
-up to January. The increased salience of issues related to migration and
-the European Union may help to explain changes in media coverage
-independent of UKIP's support. Interestingly, considerable coverage also
-surrounded Farage's comment, in December 2013, that Britain should
-accept Syrian refugees (Goodman, 2013).
+April 2013, media coverage from July to August increases considerably,
+from 613 to 1154 articles in the month. Public support continues to
+decline through August until November, decreasing from 11\% to 8\%.
+While media coverage appears to adjust dynamically downward after it's
+``uncaused'' increase of August, yet again in November media coverage
+stabilizes and slightly increases. It is only at this point in November
+that support ends its long and steady decline and yet again begins
+another substantial increase until it returns back to the high levels of
+April 2013. Again, in these two months we identify apparently minor but
+potentially crucial non-dynamically-responsive levels of media coverage
+which may be functioning as a floor preventing support from continuing
+to decline and making possible the surge beginning from November 2013.
+While of course these spikes and drops in support may just be volatility
+around UKIP's new, higher mean levels of support, the key point here is
+only to explore and give possible instances of the statistical findings.
+Unlike the previous instance of ``bias'' explored above, where political
+events such as by-elections and the party conference season may have
+played roles, in this case there are no obvious and directly
+party-related events shaping the dynamics in this period. However, one
+key event which may have played a role at this time is the lifting of
+work restrictions on Romanian and Bulgarian nationals which occurred in
+January 2014 (Martin, 2013), with media coverage intensifying in the
+months leading up to January. The increased salience of issues related
+to migration and the European Union may help to explain changes in media
+coverage independent of UKIP's support. Interestingly, considerable
+coverage also surrounded Farage's comment, in December 2013, that
+Britain should accept Syrian refugees (Goodman, 2013).
 
 Previous studies have relied on statistical models similar to the one we
 have presented here. However, this may ignore interesting dynamics
@@ -812,7 +825,11 @@ dynamics of party support.
 
 \section{Supplementary Information}\label{supplementary-information}
 
+\begin{figure}[htbp]
+\centering
 \includegraphics{ukip_media_files/figure-latex/supplementary-1.pdf}
+\caption{}
+\end{figure}
 
 \pagebreak
 
@@ -824,71 +841,70 @@ dynamics of party support.
 
 \setlength\parindent{0pt}
 
-\hypertarget{refs}{}
-\hypertarget{ref-Achen:2006fp}{}
+\hyperdef{}{ref-Achen:2006fp}{\label{ref-Achen:2006fp}}
 Achen, Christopher H. (2006) ``Let's Put Garbage-Can Regressions and
 Garbage-Can Probits Where They Belong.'' \emph{Conflict Management and
 Peace Science} 22:327--339.
 
-\hypertarget{ref-althausux5fusingux5f2001}{}
+\hyperdef{}{ref-althausux5fusingux5f2001}{\label{ref-althausux5fusingux5f2001}}
 Althaus, Scott L., Jill A. Edy, and Patricia F. Phalen. (2001) ``Using
 Substitutes for Full-Text News Stories in Content Analysis: Which Text
 Is Best?'' \emph{American Journal of Political Science} 45:707--723.
 \url{http://www.jstor.org/stable/2669247} (Accessed February 23, 2016).
 
-\hypertarget{ref-ux5felectionux5f2005}{}
+\hyperdef{}{ref-ux5felectionux5f2005}{\label{ref-ux5felectionux5f2005}}
 Anon. (2005) ``Election 2005: UKIP and Greens fail to make gains.''
 \emph{The Guardian}.
 
-\hypertarget{ref-Baum:2012je}{}
+\hyperdef{}{ref-Baum:2012je}{\label{ref-Baum:2012je}}
 Baum, Matthew A. (2012) ``The Iraq Coalition of the Willing and
 (Politically) Able: Party Systems, the Press, and Public Influence on
 Foreign Policy.'' \emph{American Journal of Political Science}
 57:442--458.
 
-\hypertarget{ref-BBC:R6UMvIKM}{}
+\hyperdef{}{ref-BBC:R6UMvIKM}{\label{ref-BBC:R6UMvIKM}}
 BBC. (2015) ``Appendix I Party Coverage 2015.''
 \url{http://downloads.bbc.co.uk/bbctrust/assets/files/pdf/our_work/election_guidelines/2015/draft_election_guidelines_appendix.pdf}.
 
-\hypertarget{ref-beckux5fsocialux5f2002}{}
+\hyperdef{}{ref-beckux5fsocialux5f2002}{\label{ref-beckux5fsocialux5f2002}}
 Beck, Paul Allen, Russell J. Dalton, Steven Greene, and Robert
 Huckfeldt. (2002) ``The Social Calculus of Voting: Interpersonal, Media,
 and Organizational Influences on Presidential Choices.'' \emph{The
 American Political Science Review} 96:57--73.
 \url{http://www.jstor.org/stable/3117810} (Accessed October 26, 2015).
 
-\hypertarget{ref-Benson:2009kb}{}
+\hyperdef{}{ref-Benson:2009kb}{\label{ref-Benson:2009kb}}
 Benson, Rodney. (2009) ``What makes news more multiperspectival? A field
 analysis.'' \emph{Poetics} 37:402--418.
 \url{http://linkinghub.elsevier.com/retrieve/pii/S0304422X09000412}.
 
-\hypertarget{ref-Boomgaarden:2007ia}{}
+\hyperdef{}{ref-Boomgaarden:2007ia}{\label{ref-Boomgaarden:2007ia}}
 Boomgaarden, Hajo G, and Rens Vliegenthart. (2007) ``Explaining the rise
 of anti-immigrant parties: The role of news media content.''
 \emph{Electoral Studies} 26:404--417.
 
-\hypertarget{ref-Boomgaarden:2009ke}{}
+\hyperdef{}{ref-Boomgaarden:2009ke}{\label{ref-Boomgaarden:2009ke}}
 Boomgaarden, Hajo G, and Rens Vliegenthart. (2009) ``How news content
 influences anti-immigration attitudes: Germany, 19932005.''
 \emph{European Journal of Political Research} 48:516--542.
 
-\hypertarget{ref-Bos:2011iy}{}
+\hyperdef{}{ref-Bos:2011iy}{\label{ref-Bos:2011iy}}
 Bos, Linda, Wouter van der Brug, and Claes de Vreese. (2011) ``How the
 Media Shape Perceptions of Right-Wing Populist Leaders.''
 \emph{Political Communication} 28:182--206.
 
-\hypertarget{ref-brandt2007multiple}{}
+\hyperdef{}{ref-brandt2007multiple}{\label{ref-brandt2007multiple}}
 Brandt, Patrick T, and John Taylor Williams. 2007. \emph{Multiple time
 series models}. London: Sage.
 
-\hypertarget{ref-daltonux5fpartisanux5f1998}{}
+\hyperdef{}{ref-daltonux5fpartisanux5f1998}{\label{ref-daltonux5fpartisanux5f1998}}
 Dalton, Russell J., Paul A. Beck, and Robert Huckfeldt. (1998)
 ``Partisan Cues and the Media: Information Flows in the 1992
 Presidential Election.'' \emph{The American Political Science Review}
 92:111--126. \url{http://www.jstor.org/stable/2585932} (Accessed October
 3, 2015).
 
-\hypertarget{ref-deaconux5fukux5f2015}{}
+\hyperdef{}{ref-deaconux5fukux5f2015}{\label{ref-deaconux5fukux5f2015}}
 Deacon, David, and Dominic Wring. (2015) ``The UK Independence Party,
 populism and the British news media: Competition, collaboration or
 containment?'' \emph{European Journal of Communication}
@@ -896,12 +912,12 @@ containment?'' \emph{European Journal of Communication}
 \url{http://ejc.sagepub.com/content/early/2015/11/06/0267323115612215}
 (Accessed February 23, 2016).
 
-\hypertarget{ref-Duverger:1972wk}{}
+\hyperdef{}{ref-Duverger:1972wk}{\label{ref-Duverger:1972wk}}
 Duverger, Maurice. (1972) ``Factors in a two-party and multiparty
 system.'' \emph{Party politics and pressure groups}. New York
 \url{http://scholar.google.com/scholar?q=related:rSp_PasTzcEJ:scholar.google.com/\&hl=en\&num=20\&as_sdt=0,5}.
 
-\hypertarget{ref-fordux5fstrategicux5f2012}{}
+\hyperdef{}{ref-fordux5fstrategicux5f2012}{\label{ref-fordux5fstrategicux5f2012}}
 Ford, Robert, Matthew J. Goodwin, and David Cutts. (2012) ``Strategic
 Eurosceptics and polite xenophobes: Support for the United Kingdom
 Independence Party (UKIP) in the 2009 European Parliament elections.''
@@ -909,82 +925,82 @@ Independence Party (UKIP) in the 2009 European Parliament elections.''
 \url{http://onlinelibrary.wiley.com/doi/10.1111/j.1475-6765.2011.01994.x/abstract}
 (Accessed November 16, 2015).
 
-\hypertarget{ref-Gerring:2015ub}{}
+\hyperdef{}{ref-Gerring:2015ub}{\label{ref-Gerring:2015ub}}
 Gerring, John. (2015) ``The relevance of relevance.'' In: Gerry Stoker,
 Guy B Peters, and Jon Pierre (eds) \emph{The relevance of political
 science}. London: Palgrave Macmillan
 \url{http://blogs.bu.edu/jgerring/files/2014/11/Chapter-2.pdf}.
 
-\hypertarget{ref-goodmanux5fdoesux5f2013}{}
+\hyperdef{}{ref-goodmanux5fdoesux5f2013}{\label{ref-goodmanux5fdoesux5f2013}}
 Goodman, Paul. (2013) ``Does Mr Farage want to destroy the
 Conservatives, or join them?; By urging ministers to accept Syrian
 refugees, Ukip's leader has played a very canny game.'' \emph{The Daily
 Telegraph}.
 
-\hypertarget{ref-Goodwin:03LtHfhh}{}
+\hyperdef{}{ref-Goodwin:03LtHfhh}{\label{ref-Goodwin:03LtHfhh}}
 Goodwin, Matthew, and Robert Ford. (2013) ``Just how much media coverage
 does UKIP get?'' \emph{New Statesman}.
 \url{http://www.newstatesman.com/politics/2013/11/just-how-much-media-coverage-does-ukip-get}.
 
-\hypertarget{ref-hopmannux5feffectsux5f2010}{}
+\hyperdef{}{ref-hopmannux5feffectsux5f2010}{\label{ref-hopmannux5feffectsux5f2010}}
 Hopmann, David Nicolas, Rens Vliegenthart, Claes De Vreese, and Erik
 Albæk. (2010) ``Effects of Election News Coverage: How Visibility and
 Tone Influence Party Choice.'' \emph{Political Communication}
 27:389--405. \url{http://dx.doi.org/10.1080/10584609.2010.516798}
 (Accessed October 10, 2015).
 
-\hypertarget{ref-IpsosMORI:gm2fXYNK}{}
+\hyperdef{}{ref-IpsosMORI:gm2fXYNK}{\label{ref-IpsosMORI:gm2fXYNK}}
 Ipsos-MORI. (n.d.) ``Voting Intention in Great Britain: Recent Trends.''
 \url{https://www.ipsos-mori.com/researchpublications/researcharchive/poll.aspx?oItemId=107\&view=wide}.
 
-\hypertarget{ref-koopmansux5friseux5f2009}{}
+\hyperdef{}{ref-koopmansux5friseux5f2009}{\label{ref-koopmansux5friseux5f2009}}
 Koopmans, Ruud, and Jasper Muis. (2009) ``The rise of right-wing
 populist Pim Fortuyn in the Netherlands: A discursive opportunity
 approach.'' \emph{European Journal of Political Research} 48:642--664.
 \url{http://onlinelibrary.wiley.com/doi/10.1111/j.1475-6765.2009.00846.x/abstract}
 (Accessed October 10, 2015).
 
-\hypertarget{ref-Kumlin:2001iq}{}
+\hyperdef{}{ref-Kumlin:2001iq}{\label{ref-Kumlin:2001iq}}
 Kumlin, Staffan. (2001) ``IdeologyDriven opinion formation in Europe:
 The case of attitudes towards the third sector in Sweden.''
 \emph{European Journal of Political Research} 39:487--518.
 \url{http://onlinelibrary.wiley.com.libproxy.temple.edu/doi/10.1111/1475-6765.00585/abstract}.
 
-\hypertarget{ref-martinux5fimmigrationux5f2013}{}
+\hyperdef{}{ref-martinux5fimmigrationux5f2013}{\label{ref-martinux5fimmigrationux5f2013}}
 Martin, Iain. (2013) ``Immigration from Romania and Bulgaria set to give
 Nigel Farage and Ukip a boost.'' \emph{The Telegraph}.
 \url{http://blogs.telegraph.co.uk/news/iainmartin1/100252078/immigration-from-romania-and-bulgaria-set-to-give-nigel-farage-and-ukip-a-boost/}.
 
-\hypertarget{ref-morrisux5felectionux5f2005}{}
+\hyperdef{}{ref-morrisux5felectionux5f2005}{\label{ref-morrisux5felectionux5f2005}}
 Morris, Nigel. (2005) ``Election 2005: UKIP's bubble may have burst, but
 Kilroy-Silk's party also fails to take off.'' \emph{The Independent}.
 
-\hypertarget{ref-murphyux5fukipux5f2015}{}
+\hyperdef{}{ref-murphyux5fukipux5f2015}{\label{ref-murphyux5fukipux5f2015}}
 Murphy, Justin. (2015) ``Ukip don't deserve their media prominence.
 Here's the proof.'' \emph{New Statesman}.
 \url{http://www.newstatesman.com/politics/2015/04/ukip-dont-deserve-their-media-prominence-heres-proof}.
 
-\hypertarget{ref-norrisux5fvirtuousux5f2000}{}
+\hyperdef{}{ref-norrisux5fvirtuousux5f2000}{\label{ref-norrisux5fvirtuousux5f2000}}
 Norris, Pippa. 2000. \emph{A Virtuous Circle: Political Communications
 in Postindustrial Societies}. Cambridge, UK: Cambridge University Press
 \url{http://www.cambridge.org/gb/academic/subjects/politics-international-relations/comparative-politics/virtuous-circle-political-communications-postindustrial-societies}.
 
-\hypertarget{ref-oegemaux5fpersonalizationux5f2009}{}
+\hyperdef{}{ref-oegemaux5fpersonalizationux5f2009}{\label{ref-oegemaux5fpersonalizationux5f2009}}
 Oegema, Dirk, and Jan Kleinnijenhuis. (2009) ``Personalization in
 political Television News: A 13-Wave Survey Study to Assess Effects of
 Text and Footage.'' \emph{Communications} 25:43--60.
 \url{http://www.degruyter.com/view/j/comm.2000.25.issue-1/comm.2000.25.1.43/comm.2000.25.1.43.xml}
 (Accessed October 26, 2015).
 
-\hypertarget{ref-Ofcom:2015tt}{}
+\hyperdef{}{ref-Ofcom:2015tt}{\label{ref-Ofcom:2015tt}}
 Ofcom. (2015) ``Ofcom list of major parties.''
 \url{http://stakeholders.ofcom.org.uk/binaries/broadcast/guidance/major-parties.pdf}.
 
-\hypertarget{ref-paletzux5fpoliticalux5f1996}{}
+\hyperdef{}{ref-paletzux5fpoliticalux5f1996}{\label{ref-paletzux5fpoliticalux5f1996}}
 Paletz, David. 1996. \emph{Political communication research: Vol. 2.
 Approaches, studies, assessments}. Norwood, NJ: Ablex.
 
-\hypertarget{ref-pauwelsux5freassessingux5f2010}{}
+\hyperdef{}{ref-pauwelsux5freassessingux5f2010}{\label{ref-pauwelsux5freassessingux5f2010}}
 Pauwels, Teun. (2010) ``Reassessing conceptualization, data and
 causality: A critique of Boomgaarden and Vliegenthart's study on the
 relationship between media and the rise of anti-immigrant parties.''
@@ -992,77 +1008,77 @@ relationship between media and the rise of anti-immigrant parties.''
 \url{http://www.sciencedirect.com/science/article/pii/S0261379410000120}
 (Accessed October 10, 2015).
 
-\hypertarget{ref-Pfaff:2008wk}{}
+\hyperdef{}{ref-Pfaff:2008wk}{\label{ref-Pfaff:2008wk}}
 Pfaff, Bernhard. (2008) ``VAR, SVAR and SVEC Models: Implementation
 Within R Package \emph{vars}.'' \emph{Journal of Statistical Software}
 27.
 
-\hypertarget{ref-rooduijnux5fmesmerisingux5f2014}{}
+\hyperdef{}{ref-rooduijnux5fmesmerisingux5f2014}{\label{ref-rooduijnux5fmesmerisingux5f2014}}
 Rooduijn, Matthijs. (2014) ``The Mesmerising Message: The Diffusion of
 Populism in Public Debates in Western European Media.'' \emph{Political
 Studies} 62:726--744.
 \url{http://onlinelibrary.wiley.com/doi/10.1111/1467-9248.12074/abstract}
 (Accessed October 2, 2015).
 
-\hypertarget{ref-sellersux5fwinningux5f2007}{}
+\hyperdef{}{ref-sellersux5fwinningux5f2007}{\label{ref-sellersux5fwinningux5f2007}}
 Sellers, Patrick J., and Brian F. Schaffner. (2007) ``Winning Coverage
 in the U.S. Senate.'' \emph{Political Communication} 24:377--391.
 \url{http://dx.doi.org/10.1080/10584600701641516} (Accessed October 11,
 2015).
 
-\hypertarget{ref-semetkoux5fgermanysux5f1994}{}
+\hyperdef{}{ref-semetkoux5fgermanysux5f1994}{\label{ref-semetkoux5fgermanysux5f1994}}
 Semetko, Holli A, and Klaus Schoenbach. 1994. \emph{Germany's Unity
 Election: Voters and the Media}. Cresskill: Hampton Press.
 
-\hypertarget{ref-Sheafer:2009hi}{}
+\hyperdef{}{ref-Sheafer:2009hi}{\label{ref-Sheafer:2009hi}}
 Sheafer, Tamir, and Gadi Wolfsfeld. (2009) ``Party Systems and
 Oppositional Voices in the News Media A Study of the Contest over
 Political Waves in the United States and Israel.'' \emph{The
 International Journal of Press/Politics} 14:146--165.
 \url{http://hij.sagepub.com/cgi/doi/10.1177/1940161209333089}.
 
-\hypertarget{ref-Soussi:vy}{}
+\hyperdef{}{ref-Soussi:vy}{\label{ref-Soussi:vy}}
 Soussi, Alasdair. (2014) ``Did British media help the UKIP win EU
 poll?''
 \url{http://www.aljazeera.com/indepth/features/2014/06/did-british-media-help-ukip-win-eu-poll-20146313346918679.html}.
 
-\hypertarget{ref-Stevenson:wo}{}
+\hyperdef{}{ref-Stevenson:wo}{\label{ref-Stevenson:wo}}
 Stevenson, Alex. (2014) ``Caroline Lucas points finger at media's Farage
 obsession.''
 \url{http://www.politics.co.uk/news/2014/05/29/ukip-victory-caroline-lucas-points-finger-at-media-s-farage}.
 
-\hypertarget{ref-Stromback:2006ht}{}
+\hyperdef{}{ref-Stromback:2006ht}{\label{ref-Stromback:2006ht}}
 Strömbäck, Jesper, and Daniela V Dimitrova. (2006) ``Political and Media
 Systems Matter A Comparison of Election News Coverage in Sweden and the
 United States.'' \emph{The International Journal of Press/Politics}
 11:131--147.
 \url{http://hij.sagepub.com.libproxy.temple.edu/content/11/4/131.abstract}.
 
-\hypertarget{ref-Sweeney:wp}{}
+\hyperdef{}{ref-Sweeney:wp}{\label{ref-Sweeney:wp}}
 Sweeney, Mark. (2015) ``BBC prepares to boost Ukip coverage as it ranks
 it a larger party in election.''
 \url{http://www.theguardian.com/media/2015/jan/15/bbc-prepares-to-boost-ukip-coverage-as-it-ranks-it-a-larger-party-in-election}.
 
-\hypertarget{ref-treschux5fpoliticiansux5f2009}{}
+\hyperdef{}{ref-treschux5fpoliticiansux5f2009}{\label{ref-treschux5fpoliticiansux5f2009}}
 Tresch, Anke. (2009) ``Politicians in the Media: Determinants of
 Legislators' Presence and Prominence in Swiss Newspapers.'' \emph{The
 International Journal of Press/Politics} 14:67--90.
 \url{http://hij.sagepub.com/content/14/1/67} (Accessed October 11,
 2015).
 
-\hypertarget{ref-Vliegenthart:2014di}{}
+\hyperdef{}{ref-Vliegenthart:2014di}{\label{ref-Vliegenthart:2014di}}
 Vliegenthart, Rens. (2014) ``Moving up. Applying aggregate level time
 series analysis in the study of media coverage.'' \emph{Quality \&
 Quantity} 48:2427--2445.
 
-\hypertarget{ref-vliegenthartux5fwhyux5f2010}{}
+\hyperdef{}{ref-vliegenthartux5fwhyux5f2010}{\label{ref-vliegenthartux5fwhyux5f2010}}
 Vliegenthart, Rens, and Hajo G. Boomgaarden. (2010) ``Why the media
 matter after all: A response to Pauwels.'' \emph{Electoral Studies}
 29:719--723.
 \url{http://www.sciencedirect.com/science/article/pii/S0261379410000855}
 (Accessed October 11, 2015).
 
-\hypertarget{ref-vliegenthartux5fanti-immigrantux5f2012}{}
+\hyperdef{}{ref-vliegenthartux5fanti-immigrantux5f2012}{\label{ref-vliegenthartux5fanti-immigrantux5f2012}}
 Vliegenthart, Rens, Hajo G. Boomgaarden, and Joost Van Spanje. (2012)
 ``Anti-Immigrant Party Support and Media Visibility: A Cross-Party,
 Over-Time Perspective.'' \emph{Journal of Elections, Public Opinion and
@@ -1070,39 +1086,39 @@ Parties} 22:315--358.
 \url{http://dx.doi.org/10.1080/17457289.2012.693933} (Accessed October
 10, 2015).
 
-\hypertarget{ref-wainwrightux5frotherhamux5f2012}{}
+\hyperdef{}{ref-wainwrightux5frotherhamux5f2012}{\label{ref-wainwrightux5frotherhamux5f2012}}
 Wainwright, Martin. (2012) ``Rotherham byelection brings relief for
 Labour as Ukip celebrates second place.'' \emph{The Guardian}.
 \url{http://www.theguardian.com/politics/2012/nov/30/rotherham-byelection-labour-ukip}.
 
-\hypertarget{ref-walgraveux5fmakingux5f2004}{}
+\hyperdef{}{ref-walgraveux5fmakingux5f2004}{\label{ref-walgraveux5fmakingux5f2004}}
 Walgrave, Stefaan, and Knut De Swert. (2004) ``The Making of the (Issues
 of the) Vlaams Blok.'' \emph{Political Communication} 21:479--500.
 \url{http://dx.doi.org/10.1080/10584600490522743} (Accessed October 10,
 2015).
 
-\hypertarget{ref-wattux5feuropeanux5f2009}{}
+\hyperdef{}{ref-wattux5feuropeanux5f2009}{\label{ref-wattux5feuropeanux5f2009}}
 Watt, Nicholas, and Matthew Taylor. (2009) ``European Elections: Ukip:
 Eurosceptics claim second place is political earthquake.'' \emph{The
 Guardian}.
 
-\hypertarget{ref-Whitaker:2011gi}{}
+\hyperdef{}{ref-Whitaker:2011gi}{\label{ref-Whitaker:2011gi}}
 Whitaker, Richard, and Philip Lynch. (2011) ``Explaining Support for the
 UK Independence Party at the 2009 European Parliament Elections.''
 \emph{Journal of Elections, Public Opinion \& Parties} 21:359--379.
 \url{http://www.tandfonline.com/doi/abs/10.1080/17457289.2011.588439}.
 
-\hypertarget{ref-whiteux5fukipux5f2006}{}
+\hyperdef{}{ref-whiteux5fukipux5f2006}{\label{ref-whiteux5fukipux5f2006}}
 White, Michael, and Nicholas Watt. (2006) ``Ukip threatens to sue over
 Cameron's 'racist' remark.'' \emph{The Guardian}.
 \url{http://www.theguardian.com/uk/2006/apr/05/otherparties.politics}
 (Accessed November 16, 2015).
 
-\hypertarget{ref-winnettux5ftoryux5f2008}{}
+\hyperdef{}{ref-winnettux5ftoryux5f2008}{\label{ref-winnettux5ftoryux5f2008}}
 Winnett, Robert, and Rosa Prince. (2008) ``Tory defector becomes Ukip's
 first MP.'' \emph{The Daily Telegraph}.
 
-\hypertarget{ref-Wintour:vf}{}
+\hyperdef{}{ref-Wintour:vf}{\label{ref-Wintour:vf}}
 Wintour, Patrick. (2015) ``Ofcom deals blow to Greens election debate
 hopes but boosts Ukips.''
 \url{http://www.theguardian.com/politics/2015/jan/08/ofcom-blow-green-party-election-debate-boost-ukips}.
