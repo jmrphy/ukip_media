@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ukip_media.aux
+The style file: plainnat.bst
+Database file #1: mybib.bib
+Repeated entry---line 5873 of file mybib.bib
+ : @article{Pfaff:2008wk
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 14513 of file mybib.bib
+ : @book{norris_virtuous_2000
+ :                           ,
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in election_2005
+Warning--empty author in election_2005
+Warning--empty publisher in Duverger:1972wk
+Warning--empty journal in IpsosMORI:gm2fXYNK
+Warning--empty journal in Soussi:vy
+Warning--empty journal in Stevenson:wo
+Warning--empty journal in Sweeney:wp
+You've used 49 entries,
+            2773 wiz_defined-function locations,
+            920 strings with 15731 characters,
+and the built_in function-call counts, 19820 in all, are:
+= -- 1863
+> -- 836
+< -- 43
++ -- 295
+- -- 246
+* -- 1500
+:= -- 3043
+add.period$ -- 176
+call.type$ -- 49
+change.case$ -- 224
+chr.to.int$ -- 49
+cite$ -- 106
+duplicate$ -- 1003
+empty$ -- 1780
+format.name$ -- 328
+if$ -- 4169
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 51
+newline$ -- 279
+num.names$ -- 194
+pop$ -- 432
+preamble$ -- 1
+purify$ -- 179
+quote$ -- 0
+skip$ -- 711
+stack$ -- 0
+substring$ -- 744
+swap$ -- 114
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 519
+warning$ -- 7
+while$ -- 196
+width$ -- 0
+write$ -- 679
+(There were 2 error messages)
