@@ -6,7 +6,7 @@
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
 \bibitem[ele(2005)]{election_2005}
-Election 2005: {UKIP} and {Greens} fail to make gains.
+Election 2005: Ukip and greens fail to make gains.
 \newblock \emph{The Guardian}, May 2005.
 
 \bibitem[Achen(2006)]{Achen:2006fp}
@@ -22,8 +22,6 @@ Scott~L. Althaus, Jill~A. Edy, and Patricia~F. Phalen.
   {Analysis}: {Which} {Text} {Is} {Best}?
 \newblock \emph{American Journal of Political Science}, 45\penalty0
   (3):\penalty0 707--723, 2001.
-\newblock ISSN 0092-5853.
-\newblock \doi{10.2307/2669247}.
 
 \bibitem[Baum(2012)]{Baum:2012je}
 Matthew~A Baum.
@@ -46,13 +44,11 @@ Paul~Allen Beck, Russell~J. Dalton, Steven Greene, and Robert Huckfeldt.
   {Organizational} {Influences} on {Presidential} {Choices}.
 \newblock \emph{The American Political Science Review}, 96\penalty0
   (1):\penalty0 57--73, March 2002.
-\newblock ISSN 0003-0554.
 
 \bibitem[Benson(2009)]{Benson:2009kb}
 Rodney Benson.
 \newblock {What makes news more multiperspectival? A field analysis}.
 \newblock \emph{Poetics}, 37\penalty0 (5-6):\penalty0 402--418, October 2009.
-\newblock \doi{10.1016/j.poetic.2009.09.002}.
 
 \bibitem[Boomgaarden and Vliegenthart(2007)]{Boomgaarden:2007ia}
 Hajo~G Boomgaarden and Rens Vliegenthart.
@@ -85,21 +81,20 @@ Russell~J. Dalton, Paul~A. Beck, and Robert Huckfeldt.
   {Presidential} {Election}.
 \newblock \emph{The American Political Science Review}, 92\penalty0
   (1):\penalty0 111--126, March 1998.
-\newblock ISSN 0003-0554.
 
-\bibitem[Deacon and Wring(2015)]{deacon_uk_2015}
+\bibitem[Deacon and Wring(2016)]{deacon_uk_2015}
 David Deacon and Dominic Wring.
-\newblock The {UK} {Independence} {Party}, populism and the {British} news
-  media: {Competition}, collaboration or containment?
-\newblock \emph{European Journal of Communication}, page 0267323115612215,
-  December 2015.
-\newblock ISSN 0267-3231, 1460-3705.
-\newblock \doi{10.1177/0267323115612215}.
+\newblock {The UK Independence Party, populism and the British news media:
+  Competition, collaboration or containment?}
+\newblock \emph{European Journal of Communication}, 31\penalty0 (2):\penalty0
+  169--184, 2016.
 
 \bibitem[Duverger(1972)]{Duverger:1972wk}
 Maurice Duverger.
-\newblock {Factors in a two-party and multiparty system}.
-\newblock In \emph{Party Politics and Pressure Groups}. New York, 1972.
+\newblock {Factors in a two-party and multiparty system: A Comparative
+  Introduction}.
+\newblock In \emph{Party Politics and Pressure Groups}. Thomas Y. Crowell
+  Company, New York, 1972.
 
 \bibitem[Ford et~al.(2012)Ford, Goodwin, and Cutts]{ford_strategic_2012}
 Robert Ford, Matthew~J. Goodwin, and David Cutts.
@@ -108,8 +103,6 @@ Robert Ford, Matthew~J. Goodwin, and David Cutts.
   {Parliament} elections.
 \newblock \emph{European Journal of Political Research}, 51\penalty0
   (2):\penalty0 204--234, March 2012.
-\newblock ISSN 1475-6765.
-\newblock \doi{10.1111/j.1475-6765.2011.01994.x}.
 
 \bibitem[Gerring(2015)]{Gerring:2015ub}
 John Gerring.
@@ -128,6 +121,8 @@ Paul Goodman.
 Matthew Goodwin and Robert Ford.
 \newblock {Just how much media coverage does UKIP get?}
 \newblock \emph{New Statesman}, November 2013.
+\newblock
+  \url{http://www.newstatesman.com/politics/2013/11/just-how-much-media-coverage-does-ukip-get}.
 
 \bibitem[Hopmann et~al.(2010)Hopmann, Vliegenthart, Vreese, and
   Alb{\ae}k]{hopmann_effects_2010}
@@ -136,12 +131,13 @@ David~Nicolas Hopmann, Rens Vliegenthart, Claes~De Vreese, and Erik Alb{\ae}k.
   {Tone} {Influence} {Party} {Choice}.
 \newblock \emph{Political Communication}, 27\penalty0 (4):\penalty0 389--405,
   October 2010.
-\newblock ISSN 1058-4609.
 
 \bibitem[{Ipsos-MORI}(2016)]{IpsosMORI:gm2fXYNK}
 {Ipsos-MORI}.
 \newblock {Voting Intention in Great Britain: Recent Trends}.
-\newblock February 2016.
+\newblock
+  \url{https://www.ipsos-mori.com/researchpublications/researcharchive/poll.aspx?oItemId=107&view=wide},
+  February 2016.
 
 \bibitem[Koopmans and Muis(2009)]{koopmans_rise_2009}
 Ruud Koopmans and Jasper Muis.
@@ -149,7 +145,6 @@ Ruud Koopmans and Jasper Muis.
   {A} discursive opportunity approach.
 \newblock \emph{European Journal of Political Research}, 48\penalty0
   (5):\penalty0 642--664, August 2009.
-\newblock ISSN 1475-6765.
 
 \bibitem[Kumlin(2001)]{Kumlin:2001iq}
 Staffan Kumlin.
@@ -157,13 +152,14 @@ Staffan Kumlin.
   attitudes towards the third sector in Sweden}.
 \newblock \emph{European Journal of Political Research}, 39\penalty0
   (4):\penalty0 487--518, June 2001.
-\newblock \doi{10.1111/1475-6765.00585}.
 
 \bibitem[Martin(2013)]{martin_immigration_2013}
 Iain Martin.
 \newblock Immigration from {Romania} and {Bulgaria} set to give {Nigel}
   {Farage} and {Ukip} a boost.
 \newblock \emph{The Telegraph}, December 2013.
+\newblock
+  \url{http://blogs.telegraph.co.uk/news/iainmartin1/100252078/immigration-from-romania-and-bulgaria-set-to-give-nigel-farage-and-ukip-a-boost/}.
 
 \bibitem[Morris(2005)]{morris_election_2005}
 Nigel Morris.
@@ -175,23 +171,19 @@ Nigel Morris.
 Pippa Norris.
 \newblock \emph{A {Virtuous} {Circle}: {Political} {Communications} in
   {Postindustrial} {Societies}}.
-\newblock Communication, {Society} and {Politics}. Cambridge University Press,
-  Cambridge, UK, 2000.
-\newblock ISBN 978-0-521-79364-3.
+\newblock Cambridge University Press, Cambridge, UK, 2000.
 
 \bibitem[Oegema and Kleinnijenhuis(2009)]{oegema_personalization_2009}
 Dirk Oegema and Jan Kleinnijenhuis.
 \newblock Personalization in political {Television} {News}: {A} 13-{Wave}
   {Survey} {Study} to {Assess} {Effects} of {Text} and {Footage}.
 \newblock \emph{Communications}, 25\penalty0 (1):\penalty0 43--60, 2009.
-\newblock ISSN 1613-4087.
-\newblock \doi{10.1515/comm.2000.25.1.43}.
 
 \bibitem[{Ofcom}(2015)]{Ofcom:2015tt}
 {Ofcom}.
 \newblock {Ofcom list of major parties}.
 \newblock
-  http://stakeholders.ofcom.org.uk/binaries/broadcast/guidance/major-parties.pdf,
+  \url{http://stakeholders.ofcom.org.uk/binaries/broadcast/guidance/major-parties.pdf},
   March 2015.
 
 \bibitem[Paletz(1996)]{paletz_political_1996}
@@ -207,7 +199,6 @@ Teun Pauwels.
   and the rise of anti-immigrant parties.
 \newblock \emph{Electoral Studies}, 29\penalty0 (2):\penalty0 269--275, June
   2010.
-\newblock ISSN 0261-3794.
 
 \bibitem[Pfaff(2008)]{Pfaff:2008wk}
 Bernhard Pfaff.
@@ -221,18 +212,16 @@ Matthijs Rooduijn.
   {Public} {Debates} in {Western} {European} {Media}.
 \newblock \emph{Political Studies}, 62\penalty0 (4):\penalty0 726--744,
   December 2014.
-\newblock ISSN 1467-9248.
 
 \bibitem[Sellers and Schaffner(2007)]{sellers_winning_2007}
 Patrick~J. Sellers and Brian~F. Schaffner.
 \newblock Winning {Coverage} in the {U}.{S}. {Senate}.
 \newblock \emph{Political Communication}, 24\penalty0 (4):\penalty0 377--391,
   November 2007.
-\newblock ISSN 1058-4609.
 
 \bibitem[Semetko and Schoenbach(1994)]{semetko_germanys_1994}
 Holli~A Semetko and Klaus Schoenbach.
-\newblock \emph{Germany’s {Unity} {Election}: {Voters} and the {Media}}.
+\newblock \emph{Germany's {Unity} {Election}: {Voters} and the {Media}}.
 \newblock Hampton Press, Cresskill, 1994.
 
 \bibitem[Sheafer and Wolfsfeld(2009)]{Sheafer:2009hi}
@@ -241,17 +230,20 @@ Tamir Sheafer and Gadi Wolfsfeld.
   the Contest over Political Waves in the United States and Israel}.
 \newblock \emph{The International Journal of Press/Politics}, 14\penalty0
   (2):\penalty0 146--165, April 2009.
-\newblock \doi{10.1177/1940161209333089}.
 
 \bibitem[Soussi(2014)]{Soussi:vy}
 Alasdair Soussi.
 \newblock {Did British media help the UKIP win EU poll?}
-\newblock June 2014.
+\newblock \emph{Al Jazeera}, June 2014.
+\newblock
+  \url{http://www.aljazeera.com/indepth/features/2014/06/did-british-media-help-ukip-win-eu-poll-20146313346918679.html}.
 
 \bibitem[Stevenson(2014)]{Stevenson:wo}
 Alex Stevenson.
 \newblock {Caroline Lucas points finger at media's Farage obsession}.
-\newblock May 2014.
+\newblock \emph{Politics.co.uk}, May 2014.
+\newblock
+  \url{http://www.politics.co.uk/news/2014/05/29/ukip-victory-caroline-lucas-points-finger-at-media-s-farage}.
 
 \bibitem[Str{\"o}mb{\"a}ck and Dimitrova(2006)]{Stromback:2006ht}
 Jesper Str{\"o}mb{\"a}ck and Daniela~V Dimitrova.
@@ -259,13 +251,14 @@ Jesper Str{\"o}mb{\"a}ck and Daniela~V Dimitrova.
   Coverage in Sweden and the United States}.
 \newblock \emph{The International Journal of Press/Politics}, 11\penalty0
   (4):\penalty0 131--147, October 2006.
-\newblock \doi{10.1177/1081180X06293549}.
 
 \bibitem[Sweeney(2015)]{Sweeney:wp}
 Mark Sweeney.
 \newblock {BBC prepares to boost Ukip coverage as it ranks it a larger party in
   election}.
-\newblock January 2015.
+\newblock \emph{The Guardian}, January 2015.
+\newblock
+  \url{http://www.theguardian.com/media/2015/jan/15/bbc-prepares-to-boost-ukip-coverage-as-it-ranks-it-a-larger-party-in-election}.
 
 \bibitem[Tresch(2009)]{tresch_politicians_2009}
 Anke Tresch.
@@ -273,7 +266,6 @@ Anke Tresch.
   {Presence} and {Prominence} in {Swiss} {Newspapers}.
 \newblock \emph{The International Journal of Press/Politics}, 14\penalty0
   (1):\penalty0 67--90, January 2009.
-\newblock ISSN 1940-1612, 1940-1620.
 
 \bibitem[Vliegenthart(2014)]{Vliegenthart:2014di}
 Rens Vliegenthart.
@@ -287,7 +279,6 @@ Rens Vliegenthart and Hajo~G. Boomgaarden.
 \newblock Why the media matter after all: {A} response to {Pauwels}.
 \newblock \emph{Electoral Studies}, 29\penalty0 (4):\penalty0 719--723,
   December 2010.
-\newblock ISSN 0261-3794.
 
 \bibitem[Vliegenthart et~al.(2012)Vliegenthart, Boomgaarden, and
   Spanje]{vliegenthart_anti-immigrant_2012}
@@ -296,20 +287,20 @@ Rens Vliegenthart, Hajo~G. Boomgaarden, and Joost~Van Spanje.
   {Cross}-{Party}, {Over}-{Time} {Perspective}.
 \newblock \emph{Journal of Elections, Public Opinion and Parties}, 22\penalty0
   (3):\penalty0 315--358, August 2012.
-\newblock ISSN 1745-7289.
 
 \bibitem[Wainwright(2012)]{wainwright_rotherham_2012}
 Martin Wainwright.
 \newblock Rotherham byelection brings relief for {Labour} as {Ukip} celebrates
   second place.
 \newblock \emph{The Guardian}, November 2012.
+\newblock
+  http://www.theguardian.com/politics/2012/nov/30/rotherham-byelection-labour-ukip.
 
 \bibitem[Walgrave and Swert(2004)]{walgrave_making_2004}
 Stefaan Walgrave and Knut~De Swert.
 \newblock The {Making} of the ({Issues} of the) {Vlaams} {Blok}.
 \newblock \emph{Political Communication}, 21\penalty0 (4):\penalty0 479--500,
   October 2004.
-\newblock ISSN 1058-4609.
 
 \bibitem[Watt and Taylor(2009)]{watt_european_2009}
 Nicholas Watt and Matthew Taylor.
@@ -323,13 +314,13 @@ Richard Whitaker and Philip Lynch.
   European Parliament Elections}.
 \newblock \emph{Journal of Elections, Public Opinion {\&} Parties}, 21\penalty0
   (3):\penalty0 359--379, August 2011.
-\newblock \doi{10.1080/17457289.2011.588439}.
 
 \bibitem[White and Watt(2006)]{white_ukip_2006}
 Michael White and Nicholas Watt.
 \newblock Ukip threatens to sue over {Cameron}'s 'racist' remark.
 \newblock \emph{The Guardian}, April 2006.
-\newblock ISSN 0261-3077.
+\newblock
+  \url{http://www.theguardian.com/uk/2006/apr/05/otherparties.politics}.
 
 \bibitem[Winnett and Prince(2008)]{winnett_tory_2008}
 Robert Winnett and Rosa Prince.

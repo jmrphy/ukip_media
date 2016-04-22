@@ -13,7 +13,7 @@ author:
   affiliation: University of Southampton
 - name: Daniel Devine
   affiliation: University of Southampton
-abstract: "Previous research suggests media attention may cause support for populist right-wing parties, but extant evidence is mostly limited to proportional representation systems in which such an effect would be most likely. At the same time, in the United Kingdom's first-past-the-post system, an ongoing political and regulatory debate revolves around whether the media give disproportionate coverage to the populist right-wing UK Independence Party (UKIP). We use a mixed-methods approach to investigate the causal dynamics of UKIP support and media coverage as an especially valuable case. Vector autoregression (VAR) using monthly, aggregate time-series data from January 2004 to February 2016 provides new evidence consistent with a model in which media coverage drives party support, but not vice-versa. Additionally, we identify key periods in which stagnating or declining support for UKIP is followed by increases in media coverage and subsequent increases in public support. The findings show that media coverage may drive public support for right-wing populist parties, in a substantively non-trivial fashion irreducible to previous levels of public support, even in a national institutional environment least supportive of such an effect. The findings have troubling implications for political debates in the United Kingdom and potentially liberal democracies more generally."
+abstract: "Previous research suggests media attention may cause support for populist right-wing parties, but extant evidence is mostly limited to proportional representation systems in which such an effect would be most likely. At the same time, in the United Kingdom's first-past-the-post system, an ongoing political and regulatory debate revolves around whether the media give disproportionate coverage to the populist right-wing UK Independence Party (UKIP). We use a mixed-methods research design to investigate the causal dynamics of UKIP support and media coverage as an especially valuable case. Vector autoregression (VAR) using monthly, aggregate time-series data from January 2004 to February 2016 provides new evidence consistent with a model in which media coverage drives party support, but not vice-versa. Additionally, we identify key periods in which stagnating or declining support for UKIP is followed by increases in media coverage and subsequent increases in public support. The findings show that media coverage may drive public support for right-wing populist parties, in a substantively non-trivial fashion irreducible to previous levels of public support, even in a national institutional environment least supportive of such an effect. The findings have troubling implications for political debates in the United Kingdom and potentially liberal democracies more generally."
 keywords: "UKIP, media, public opinion, political parties, right-wing populism"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 geometry: margin=1.25in
@@ -78,10 +78,10 @@ options(digits=2)
 set.seed(345)
 options(xtable.comment = FALSE)
 
-setwd("C:/Users/Daniel/Dropbox/ukip_media/article")
-#setwd("~/Dropbox/gh_projects/ukip_media/article")
-df<-read.csv("C:/Users/Daniel/Dropbox/ukip_media/data/ukip_media.csv")
-#df<-read.csv("~/Dropbox/gh_projects/ukip_media/data/ukip_media.csv")
+#setwd("C:/Users/Daniel/Dropbox/ukip_media/article")
+setwd("~/Dropbox/gh_projects/ukip_media/article")
+#df<-read.csv("C:/Users/Daniel/Dropbox/ukip_media/data/ukip_media.csv")
+df<-read.csv("~/Dropbox/gh_projects/ukip_media/data/ukip_media.csv")
 df$Date<-mdy(df$Date)
 
 df$UKIP.Vote<-interpNA(df$UKIP.Vote, method = "linear")
@@ -229,9 +229,11 @@ stargazer(varmodel$varresult$UKIP.Vote, varmodel$varresult$UKIP.Articles,
 
 ```
 
-Initial VAR results show little evidence that changes in public support predict media coverage, but statistically significant evidence that media coverage drives public support. As the numerical results in Table 1 show, there is no statistically discernable correlation between past changes in public support and changes in media coverage, whereas past changes in media coverage have a statistically significant correlation with future changes in public support, as the coefficients for each distributed lag of $\Delta Articles$ in Equation 1 are positive and significant. Because our endogenous variables are first differences of the natural logarithm, the coefficients can be interpreted as elasticities. That is, the coefficients in Equation 1 and Equation 2 are approximations of the expected growth rate in $Y_2$ associated with a one percent increase in $Y_1$ at each of its lagged values. To gain a sense of how *Support* responds to *Articles* after three periods, a simple approach would be to sum the coefficients for each distributed lag of $\Delta Articles$ in Equation 1. A better approach is to use impulse response functions, which trace the effect of a random one-unit shock in one variable on future values of a second variable in the system.
+Initial VAR results show little evidence that changes in public support predict media coverage, but statistically significant evidence that media coverage drives public support. As the numerical results in Table 1 show, there is no statistically discernable correlation between past changes in public support and changes in media coverage, whereas past changes in media coverage have a statistically significant correlation with future changes in public support, as the coefficients for each distributed lag of $\Delta Articles$ in Equation 1 are positive and significant. As reported in Table 2, Granger causality tests also support H1 that changes in media coverage are associated with future changes in public support while they do not support the reverse relationship hypothesized in H2, as the true coefficients for the lags of $\Delta Articles$ in Equation 1 are very unlikely to all be zero (p=.054) while we fail to reject the possibility that all of the coefficients for $\Delta Support$ in Equation 2 are zero (p=.74).
 
-In Figure 2 and Figure 3, we generate orthogonalized impulse response plots. We consider orthogonalized or uncorrelated shocks because we are most interested in what happens when one variable changes for reasons that do not also lead to changes in the other variable. The x-axis reflects time periods following on an initial shock in the error term of one variable, while the y-axis reflects the expected changes in the other variable. As reported in Table 2, Granger causality tests support H1 that changes in media coverage are associated with future changes in public support while they do not support the reverse relationship hypothesized in H2, as the true coefficients for the lags of $\Delta Articles$ in Equation 1 are very unlikely to all be zero (p<=.05) while we fail to reject the possibility that all of the coefficients for $\Delta Support$ in Equation 2 are zero (p=.74).
+Because our endogenous variables are first differences of the natural logarithm, the coefficients in Table 1 can be interpreted as elasticities. That is, the coefficients in Equation 1 and Equation 2 are approximations of the expected growth rate in $Y_2$ associated with a one percent increase in $Y_1$ at each of its lagged values. To gain a sense of how *Support* responds to *Articles*, the typical approach is to use impulse response functions, which trace the effect of a random one-unit shock in one variable on future values of a second variable in the system.
+
+In Figure 2 and Figure 3, we generate orthogonalized impulse response plots. We consider orthogonalized or uncorrelated shocks because we are most interested in what happens when one variable changes for reasons that do not also lead to changes in the other variable. The x-axis reflects time periods following on an initial shock in the error term of one variable, while the y-axis reflects the expected changes in the other variable.
 
 
 ```{r, warning=FALSE, message=FALSE, error=FALSE, echo=FALSE, echo=FALSE, results='asis'}
@@ -319,170 +321,17 @@ large.effect<-max.y*(coeff.large/100)
 
 ```
 
-To interpret the estimated effect media coverage has on UKIP support, consider the impulse response function plotted in Figure 3. The maximum number of monthly articles observed in the sample is `r max.x`, therefore a one-percent increase in articles is equal to a monthly increase of about `r round(one.unit.x)` articles. The maximum value of *Support* is `r max.y`, so the first period of the impulse response (`r coeff`) suggests that in response to a `r round(one.unit.x)`-article increase, *Support* would increase by about `r round(coeff*100)`% of 1% of `r max.y`%. This amounts to an increase of roughly `r effect`% of the population reporting an intention to vote for UKIP. While this hypothetical effect of a small increase in coverage is minute, the history of UKIP's media coverage contains several months of exceptionally large increases in reporting. 1% of months in the sample were characterized by article growth of `r round(large.diff.x)` articles or greater, that is, a growth rate of `r large.diff.x.percent`% or greater. By the preceding calculations, a `r large.diff.x.percent`% increase in articles would be associated with a `r coeff.large`% growth rate in *Support*, equivalent to a `r large.effect`-point increase in the percentage of the population reporting an intention to vote for UKIP.
+To interpret the estimated effect media coverage has on UKIP support, consider the impulse response function plotted in Figure 3. The maximum number of monthly articles observed in the sample is `r max.x`, therefore a one-percent increase in articles is equal to a monthly increase of about `r round(one.unit.x)` articles. The maximum value of *Support* is `r max.y`, so the first period of the impulse response (`r coeff`) suggests that in response to a `r round(one.unit.x)`-article increase, *Support* would increase by about `r round(coeff*100)`% of 1% of `r max.y`%. This amounts to an increase of roughly `r effect`% of the population reporting an intention to vote for UKIP. While this hypothetical effect of a small increase in coverage is minute, the history of UKIP's media coverage contains several months of exceptionally large increases in reporting. Those months in the top 1% of article growth (the 99th percentile) were characterized by article growth of `r round(large.diff.x)` articles or greater, that is, a growth rate of `r large.diff.x.percent`% or greater. By the preceding calculations, a `r large.diff.x.percent`% increase in articles would be associated with a `r coeff.large`% growth rate in *Support*, equivalent to a `r large.effect`-point increase in the percentage of the population reporting an intention to vote for UKIP.
 
-How does the statistical model help us to understand the historical rise of public support for UKIP? We can use the model to compare the actual, observed levels of UKIP support to the levels of UKIP support the model would predict under the hypothetical condition that UKIP received less media coverage over the past several years. To explore this counterfactual, we begin by estimating a tradtional ordinary least-squares regression equivalent to Equation 1 with $\Delta Support$ as the dependent variable. We then generate fake data exactly the same as that used in Equation 1 but we assign to *Articles* a monthly value equal to half of the observed value for each month between June 2012 and February 2016. After re-estimating Equation 1 on this counterfactual dataset, we then generate predicted values of the dependent variable. We then calculate the cumulative sum of these values and exponentiate the series to arrive at predicted unlogged levels of UKIP support. This gives us the time-series of *Support* we would expect to observe under the hypothetical condition that media coverage decreased by 50% (relative to each observed month) beginning in June 2012 until the end of the sample. 
-
-Given the counterfactual scenario of 50% less media coverage in all months from June 2012, Figure 4 plots the levels of UKIP support we would expect alongside the levels we have observed in the party's history. In the counterfactual scenario, support for UKIP still increases from June 2012 to February 2016 but more slowly, and to notably lower levels, than has been observed. UKIP support rose to more than 14% in UKIP's best months of 2013 and 2014, but if UKIP received 50% less media coverage we would not expect UKIP to exceed even 8% support until the end of 2014. Under the counterfactual scenario, UKIP support would rise no higher than 11.1% in May 2015 before dropping to 6.8% by February 2016, 5.8 points less than the last observed level of support.
-
-
-```{r predicted-plot, include=FALSE}
-
-# fanchart(predict(varmodel, n.ahead=3, dumvar=diffvars[143:145,4:5]))
-
-## Predict from 06/2012 to 02/2016 had there been zero articles
-
-# Make newdata dataframe for prediction
-n.ahead <- 40
-simvars<-diffvars
-
-# Row 101 = 2012-06-01
-# Row 140 = 2016-02-01
-
-simvars$UKIP.Articles <- ifelse(as.Date(simvars$Date)>="2012-06-01" &
-                                  as.Date(simvars$Date)<="2016-02-01" ,0,simvars$UKIP.Articles)
-# simvars$UKIP.Vote <- ifelse(as.Date(simvars$Date)>="2012-07-01" &
-#                                  as.Date(simvars$Date)<="2016-02-01" ,NA,simvars$UKIP.Vote)
-
-# Subset to only values before 10/2012
-simvars<-subset(simvars, Date<="2012-10-01")
-
-
-# Predicted values for 40 months out starting in 06/2012, with data
-ypred <- predict(varmodel,
-                 n.ahead = 40,
-                 dumvar=diffvars[101:140,4:5],
-                 newxreg = simvars)
-
-
-# molten<-melt(diffvars[c("UKIP.Vote", "votepred", "Date")], id.vars=c("Date"))
-# 
-# ggplot(molten, aes(x=as.Date(Date))) +
-#     geom_line(aes(y=value, colour=variable, linetype=variable)) +
-#     scale_colour_manual(values=cbbPalette) +
-#   scale_x_date(labels = date_format("%m/%Y"),
-#                breaks = pretty_breaks(),
-#                limits = as.Date(c('2012-06-01','2015-09-01'))) +
-#   theme_bw() 
-
-# Everything works up to here
-# 
-# vote.pred<-ypred$fcst$UKIP.Vote[,1]
-# 
-# pred.df<-as.data.frame(diffvars$UKIP.Vote)
-# 
-# pred.df$votepred<-pred.df$UKIP.Vote.original
-# names(pred.df)<-"Support"
-# 
-# pred.df$votepred[101:140]<-vote.pred
-# pred.df$votepred<-exp(pred.df$votepred) #unlog
-# pred.df$unscaled.
-# 
-# # Period we want to see predicted values for in graph
-# diffvars$votepred[101:140]<-vote.pred
-
-```
-
-```{r predicted-plot2, include=TRUE, fig.height=3.5, fig.width=7, echo=FALSE, warning=FALSE, error=FALSE, fig.cap="Observed vs. Predicted UKIP Support (Dashed Line) Given a Counterfactual 50% Less Coverage from June 2012 (Vertical Line) to February 2016"}
-
-require(dynlm)
-
-vote.raw<-zoo(unscaled$UKIP.Vote) # original series
-vote<-zoo(log(unscaled$UKIP.Vote)) # log
-vote.d<-diff(vote) # difference
-vote.d.l1<-diff(lag(vote,-1)) # difference L1
-vote.d.l2<-diff(lag(vote,-2)) # difference L2
-vote.d.l3<-diff(lag(vote,-3)) # difference L3
-
-articles.raw<-zoo(unscaled$UKIP.Articles) # original series
-articles<-zoo(log(unscaled$UKIP.Articles)) # log
-articles.d<-diff(articles) # difference
-articles.d.l1<-diff(lag(articles,-1)) # difference L1
-articles.d.l2<-diff(lag(articles,-2)) # difference L2
-articles.d.l3<-diff(lag(articles,-3)) # difference L3
-
-General.Elections<-as.factor(unscaled$General.Elections)
-EU.Elections<-as.factor(unscaled$EU.Elections)
-Date<-unscaled$Date
-
-ols.data<-data.frame(cbind(vote.raw, vote,vote.d,vote.d.l1, vote.d.l2, vote.d.l3,
-  articles.raw, articles,articles.d,articles.d.l1,articles.d.l2,articles.d.l3,
-  General.Elections, EU.Elections, Date))
-
-ols.mod<-lm(vote.d ~ vote.d.l1 + vote.d.l2 + vote.d.l3 +
-          articles.d + articles.d.l1 + articles.d.l2 + articles.d.l3 +
-           General.Elections + EU.Elections + Date,
-        data=ols.data)
-# summary(ols.mod)
-
-# Same as OLS Model but Change Values of Article Variables
-
-# Row 101 = 2012-06-01
-# Row 140 = 2016-02-01
-
-# Temporal alignment seems to be off
-# ols.data$bias<-ifelse(qual.graph.df$UKIP.Articles.d>.05 &
-#                              qual.graph.df$UKIP.Vote.d<.05 &
-#                              qual.graph.df$UKIP.Vote.d.l<.05, 1, 0)
-
-# articles.raw <- ifelse(ols.data$bias==1,ols.data$articles.raw[-1],ols.data$articles.raw)
-
-articles.raw <- ifelse(as.Date(Date)>="2012-06-01" &
-                                  as.Date(Date)<="2016-02-01",ols.data$articles.raw/2,ols.data$articles.raw)
-
-
-
-articles<-zoo(log(articles.raw)) # log
-articles.d<-diff(articles) # difference
-articles.d.l1<-diff(lag(articles,-1)) # difference L1
-articles.d.l2<-diff(lag(articles,-2)) # difference L2
-articles.d.l3<-diff(lag(articles,-3)) # difference L3
-
-ols.data.sim<-data.frame(cbind(vote.raw, vote,vote.d,vote.d.l1, vote.d.l2, vote.d.l3,
-  articles.raw, articles,articles.d,articles.d.l1,articles.d.l2,articles.d.l3,
-  General.Elections, EU.Elections, Date))
-
-
-# Subset to only values before 10/2012
-#simvars<-subset(simvars, Date<="2012-10-01")
-
-
-# Predicted values for 40 months out starting in 06/2012, with data
-yp1 <- predict(ols.mod,
-                 newdata = ols.data.sim)
-
-yp2 <- yp1
-
-# Cumulate first differences ignoring NAs
-yp2[!is.na(yp1)] <- cumsum(yp2[!is.na(yp1)])
-
-ypred<-exp(yp2)
-simdf<-data.frame(ypred)
-simdf$Date <- unscaled$Date
-simdf$UKIP.Vote <- unscaled$UKIP.Vote
-simdf$ypred[1:101] <- NA
-
-
-ggplot(simdf, aes(x=Date)) +
-  geom_line(aes(y=UKIP.Vote)) +
-  geom_line(aes(y=ypred), color="#56B4E9", linetype=2) +
- # geom_vline(aes(xintercept = as.numeric(simdf$Date[102])), colour="green", alpha=.5) +
-  geom_vline(aes(xintercept = as.numeric(simdf$Date[102])), colour="#CC79A7", linetype="solid", alpha=.6) +
-  ylab("Vote Intention (%)") +
-  theme_bw()
-
-```
-
-Finally with respect to the statistical modeling, we note there are limitations of the data which may make it difficult to identify the full range of causal effects in a VAR approach. First, it is possible that monthly measures are too infrequent to capture causal effects if the real lag between effects is shorter than one month. Also, importantly, structural tests on all models suggest strong evidence of instantaneous causality. Thus, the VAR results suggest clear but imperfect and, for reasons discussed above, inherently limited evidence for Hypothesis 1 that increases in media coverage lead to increases in public support. Simulating counterfactuals shows that the dynamics of UKIP's public support would likely have been notably less impressive given quantities of media coverage comparable to that typically received by other parties. The VAR results provide no evidence for Hypothesis 2, that increases in public support lead to increases in media coverage. Given the problem of instantaneous causality, we cannot rule out the possibility that both variables drive each other in periods shorter than one month or that both variables are driven by some third unobserved variable. Nonetheless, an empirical fact of our data is that media coverage Granger-causes public support and not vice-versa.
-
+Finally, with respect to the statistical modeling, we note there are limitations of the data which may make it difficult to identify the full range of causal effects in a VAR approach. First, it is possible that monthly measures are too infrequent to capture causal effects if the real lag between effects is shorter than one month. Also, importantly, structural tests on all models suggest strong evidence of instantaneous causality. Thus, the VAR results suggest clear but imperfect and, for reasons discussed above, inherently limited evidence for Hypothesis 1 that increases in media coverage lead to increases in public support. The VAR results provide no evidence for Hypothesis 2, that increases in public support lead to increases in media coverage. Given the problem of instantaneous causality, we cannot rule out the possibility that both variables drive each other in periods shorter than one month or that both variables are driven by some third unobserved variable. Nonetheless, an empirical fact of our data is that media coverage Granger-causes public support and not vice-versa.
 
 # Qualitative Analysis
 
-To what extent are the statistical regularities identified by the vector autoregression historically significant causal factors in the rise of public support for UKIP? To facilitate a qualitative investigation of the dynamics, we quantitatively identifed months which meet criteria similar to the concept of Granger causality. Any month ($t$) that is immediately preceded by two months ($t-1$, $t-2$) of stagnating or declining public support but increased media coverage, we designate as a month of "uncaused" media increase or media "bias" for short. Symmetrically, any month that is immediately preceded by two months of stagnating or declining media coverage but increasing public support, we consider a month of "uncaused" or exogenously increasing public support. To mitigate the probability we will be counting mere noise as meaningful increases, we count as increases only those greater than .05 standard deviations and all other months as "stagnating or decreasing." Figure 4 presents the standardized values of each time series with dot-dash vertical lines indicating months of uncaused media 'bias' and long-dash vertical lines indicating months of uncaused increases in public support. A first consideration of Figure 4 reveals that increases in media coverage unwarranted by public support are not only roughly as frequent as uncaused increases in public support, but they are found at multiple pivotal months in periods of the most dramatic increases in UKIP's public support. To be clear, we are not claiming to pinpoint key moments of causal effect; in any particular point of the time-series, it is impossible to know whether a particular pattern represents a random or systematic component. Rather, we take the evidence from the VAR to be our warrant for exploring the qualitative data in search of examples whereby the substantive significance of the statistical evidence may either be better illustrated or possibly discounted due to untheorized contingencies. Based on our preliminary explorations summarized in Figure 4, we focus especially on two key periods: from July to September of 2012, and the second half of 2013.
+To what extent are the statistical regularities identified by the vector autoregression historically significant causal factors in the rise of public support for UKIP? To facilitate a qualitative investigation of the dynamics, we quantitatively identified months which meet criteria similar to the concept of Granger causality. Any month ($t$) that is immediately preceded by two months ($t-1$, $t-2$) of stagnating or declining public support but increased media coverage, we designate as a month of "uncaused" media increase or media "bias" for short. Symmetrically, any month that is immediately preceded by two months of stagnating or declining media coverage but increasing public support, we consider a month of "uncaused" or exogenously increasing public support. To mitigate the probability we will be counting mere noise as meaningful increases, we count as increases only those greater than .05 standard deviations and all other months as "stagnating or decreasing." Figure 4 presents the standardized values of each time series with dot-dash vertical lines indicating months of uncaused media 'bias' and long-dash vertical lines indicating months of uncaused increases in public support. A first consideration of Figure 4 reveals that increases in media coverage unwarranted by public support are not only roughly as frequent as uncaused increases in public support, but they are found at multiple pivotal months in periods of the most dramatic increases in UKIP's public support. To be clear, we are not claiming to pinpoint key moments of causal effect; in any particular point of the time-series, it is impossible to know whether a particular pattern represents a random or systematic component. Rather, we take the evidence from the VAR to be our warrant for exploring the qualitative data in search of examples whereby the substantive significance of the statistical evidence may either be better illustrated or possibly discounted due to untheorized contingencies. Based on Figure 4, we focus especially on two key periods: from July to September of 2012, and the second half of 2013.
 
 UKIP, formed in 1993, began fielding European parliamentary candidates in 1994 and British parliamentary candidates in 1997. Since then, the party has enjoyed mixed but notable increases in public support and in electoral outcomes, particularly in the European parliament where the party was the largest in the 2014 election. Until the 2015 general election, UKIP’s domestic electoral success had been much less impressive, receiving just 3.1\% of the vote in 2010. Like other small or new parties, it has a history of infighting, changes of direction and leadership, and problems with financial mismanagement [@Whitaker:2011gi]. As recently as 2011, a lack of media attention was cited as a factor in UKIP’s poor performance, as well as credibility and relatively few activists [@ford_strategic_2012]. Indeed, the historical pattern of both media coverage and public support for UKIP over much of its recent history, from 2004 to 2009, was a series of small increases which consistently returned to low baseline quantities of little political consequences.
 
-The party experienced its first bump in both coverage and voting intention in 2004 with the European election, in which they received 16\% of the vote, where coverage reached 829 articles in a single month, their record amount of coverage at the time and the greatest amount of coverage the party would experience until 2012. During this spike, both media coverage and voting intention increase proportionately and as would be expected if coverage was driven by public opinion: Figure 4 indicates no bias or exogenous increases of support in this instance. Following this, both coverage and support decay and return to poltically negligible levels. Over the next eight years, there are a range of events that do not attract very much media attention or public support; indeed, events occur between these years that are similar to those that will occur in later years but they fail to generate the extraordinary media attention gained by such events in later years. The vast majority of coverage is "in passing," such as everday reports of election results, or else it is negative, regarding claims of fraud and infighting. Indeed, Figure 2 shows that this period was characterised by exogenous increases of support not tracked by media coverage, supporting the claim that a lack of media coverage failed to facilitate public support through this period [@ford_strategic_2012]. In some ways, the identification of the two series following each other without any 'bias' and of exogenous increases of support gives us some confidence in the findings of bias discussed earlier. 
+The party experienced its first increases in both coverage and voting intention in 2004 with the European election, in which they received 16\% of the vote, where coverage reached 829 articles in a single month, their record amount of coverage at the time and the greatest amount of coverage the party would experience until 2012. During this spike, both media coverage and voting intention increase proportionately and as would be expected if coverage was driven by public opinion: Figure 4 indicates no media bias or exogenous increases of support in this instance. Following this, both coverage and support decay and return to poltically negligible levels. Over the next eight years, there are a range of events that do not attract very much media attention or public support; indeed, events occur between these years that are similar to those that will occur in later years but they fail to generate the extraordinary media attention gained by such events in later years. The vast majority of coverage refers to everyday factual information such as reports of election results, or else it tends to report claims of fraud and infighting. Indeed, Figure 4 shows that this period was characterised by several small, quickly decaying increases in support not predicted by media coverage, consistent with the claim that a lack of media coverage failed to facilitate public support through this period [@ford_strategic_2012]. 
 
 Apart from the 2005 election, in which UKIP received little coverage and performed poorly (receiving just 149 articles in that month) [@election_2005; @morris_election_2005], UKIP saw little change in public support or media coverage until the European elections of 2009. There is a small boost in both support and coverage in April 2006, when David Cameron calls the party ‘fruitcakes, loonies’ and ‘closet racists’ [@white_ukip_2006]. Interestingly, this rise in media coverage was followed by a small but sustained boost in public support, which persisted for three months.  In April 2008, Conservative MP Bob Spink defected, giving UKIP their first MP which generated very little coverage, despite being called a coup [@winnett_tory_2008]. Even the European election in 2009, in which UKIP came in second place, generated far less coverage than the 2004 European election, where the party came in third place (829 to 320 articles in a month, respectively). Despite this, it was still hailed as a ‘political earthquake’ [@watt_european_2009] and garnered coverage for UKIP’s leader Nigel Farage.
 
@@ -526,23 +375,21 @@ ggplot(qual.molten, aes(x=as.Date(Date))) +
 
 ```
 
-Following this, there are at least two sets of months in which increased media coverage is not caused by changes in UKIP's public support but is followed by some of UKIP's most historically crucial increases in public support. Using Figure 4 as a guide, we consider in greater detail the two months of "uncaused" increases in coverage near the middle of 2012 (July and September) and the second half of 2014 (August and November). Readers may refer to Supplementary Information for an additional plot that magnifies this particular section of Figure 4. This period includes a three by-elections (Corby, Middlesborough and Rotherham), with many being controversial [@wainwright_rotherham_2012], as well as the UKIP party conference. All three of these by-elections occurred in November 2012; UKIP placed second in two and third in Corby, with the Rotherham by-election's 21\% vote share being the party's highest up to that point. In July 2012 UKIP's public support was unremarkably near its average and was declining from June, after it had been stagnant since May. But media coverage held relatively steady, slightly decreasing once but slightly increasing twice (and slightly increasing overall) from June to September, from 123 to 261 articles. It is only at this point that public support increases notably from September to October and is followed by a spike in media coverage that likely represented a moment of positive feedback ending in the first truly significant rise of UKIP into mainstream public consciousness - up to 15\% support in April 2013. 
+Following this, there are at least two sets of months in which increased media coverage is not caused by changes in UKIP's public support but is followed by some of UKIP's most historically crucial increases in public support. Using Figure 4 as a guide, we consider in greater detail the two months of "uncaused" increases in coverage near the middle of 2012 (July and September) and the second half of 2014 (August and November). Readers may refer to Supplementary Information for an additional plot that magnifies this particular section of Figure 4. This period includes three by-elections (Corby, Middlesborough and Rotherham), with many being controversial [@wainwright_rotherham_2012], as well as the UKIP party conference. All three of these by-elections occurred in November 2012; UKIP placed second in two and third in Corby, with the Rotherham by-election's 21\% vote share being the party's highest up to that point. In July 2012 UKIP's public support was unremarkably near its average and was declining from June, after it had been stagnant since May. But media coverage held relatively steady, slightly decreasing once but slightly increasing twice (and slightly increasing overall) from June to September, from 123 to 261 articles. It is only at this point that public support increases notably from September to October and is followed by a spike in media coverage that likely represented a moment of positive feedback ending in the first truly significant rise of UKIP into mainstream public consciousness - up to 15\% support in April 2013. 
 
 Between August and November 2012, the amount of articles covering UKIP increased from 198 to 948, the most they had ever received in one month at the time, beyond three standard deviations from their long-term mean. To be clear, this dramatic surge of UKIP support appears to launch with a moment of postive feedback betwen support and media coverage, beginning with a notable spike in public support. However, the months of July and September 2012 are months in which media coverage is slightly increasing despite stagnant or declining levels of public support, and it is these dynamically unresponsive months of media coverage that precede the spike in support observed in October. Of course, it is impossible to distinguish these slight increases in media coverage in July and September from random noise in the polling; but from the statistical analysis we have reason to believe such moments of unresponsively increasing media coverage are at least comparatively more likely to be predictve of changes in support than vice versa. Thus, while it would be impossible to demonstrate conclusively that these months of media coverage played a causal role in the dramatic rise of support achieved by November, our model suggests it is more likely these unresponsively stable and slightly increasing months of media coverage played a causal role in the increased support of October, than it is that the increased support in October played a causal role in the then-highest level of media coverage seen in November. In turn, the unprecedently high levels of media coverage in November likely played more of a role in the following spike of support than the October spike in support played in the November spike in media coverage. This interpretation is enhanced by the additional fact that after the spike in support of October, November returned to the lowest level of support observed in several months. Again, while we cannot confidently read causal dynamics in particular data points, the point is that the increase in support of October, which ostensibly seems to be followed by a spike in media coverage ultimately leading to UKIP's real debut, is a less plausible interpretation of the data than one based on Hypothesis 1.
 
 Now consider the period between July 2013 and December 2014. Despite public support declining rapidly and steadily from its high point in April 2013, media coverage from July to August increases considerably, from 613 to 1154 articles in the month. Public support continues to decline through August until November, decreasing from 11\% to 8\%. While media coverage appears to adjust dynamically downward after its "uncaused" increase of August, yet again in November media coverage stabilizes and slightly increases. It is only at this point in November that support ends its long and steady decline and yet again begins another substantial increase until it returns back to the high levels of April 2013.  Again, in these two months we identify apparently minor but potentially crucial non-dynamically-responsive levels of media coverage which may be functioning as a floor preventing support from continuing to decline and making possible the surge beginning from November 2013. While of course these spikes and drops in support may just be volatility around UKIP's new, higher mean levels of support, the key point here is only to explore and give possible instances of the statistical findings. Unlike the previous instance of "bias" explored above, where political events such as by-elections and the party conference season may have played roles, in this case there are no obvious and directly party-related events shaping the dynamics in this period. However, one key event which may have played a role at this time is the lifting of work restrictions on Romanian and Bulgarian nationals which occurred in January 2014 [@martin_immigration_2013], with media coverage intensifying in the months leading up to January. The increased salience of issues related to migration and the European Union may help to explain changes in media coverage independent of UKIP's support. Interestingly, considerable coverage also surrounded Farage's comment, in December 2013, that Britain should accept Syrian refugees [@goodman_does_2013].
 
-Previous studies have relied on statistical models similar to the one we have presented here. However, this may ignore interesting dynamics hidden within the data about what is happening in the relationship between media coverage and public opinion. A qualitative appreciation of the data indicates at least two key examples where increased media coverage unwarranted by changes in public support take place in key periods of UKIP's rise.
+Previous studies have relied on statistical models similar to the one we have presented here. However, a qualitative appreciation of the data indicates at least two key examples where increased media coverage unwarranted by changes in public support take place in key periods of UKIP's rise.
 
 # Conclusion
 
-This study has made three contributions. Firstly, to our knowledge this is one of the first articles to study the dynamics of right-wing populist party support and quantity of media coverage in the context of a majoritarian system and the UK in particular; previous research has primarily focused on other Western European democracies such as Belgium, the Netherlands and Germany. Despite the change in political system, our findings support those of [@vliegenthart_why_2010; @vliegenthart_anti-immigrant_2012], as we find quantitative and qualitative evidence that media coverage may have played a unique causal role in increasing support for UKIP, in a fashion irreducible to previous levels of support or election outcomes. 
+This study has made three contributions. First, to our knowledge this is one of the first articles to study the dynamics of right-wing populist party support and quantity of media coverage in the context of a majoritarian system and the UK in particular; previous research has primarily focused on other West European democracies such as Belgium, the Netherlands and Germany. Despite the change in political system, this study has shown quantitative and qualitative evidence that media coverage may have played a unique causal role in increasing support for UKIP, in a fashion irreducible to previous levels of support or election outcomes. 
 
 Second, these findings are of significance to contemporary public debate in the UK concerning the perception that unfair quantities of media coverage are given to UKIP. Some have argued that extensive media coverage of UKIP is justified due to public support for the party. The findings here, on the other hand, are inconsistent with this argument: the extraordinary media coverage which has been given to UKIP cannot be explained or defended on grounds of public support. We find that media coverage has no reliable relationship to public support in the one month, two months, or three months before a particular month of coverage. Indeed, we find that coverage may have independently and uniquely driven some of the very public support which media regulators would later point to as their justification for the extraordinary coverage given to UKIP. Our findings therefore raise serious questions for the function of media coverage in a democratic political system, because they suggest that unelected and unrepresentative actors (the media) may be systematically shaping public opinion toward, and the fortunes of, certain political parties in contradiction to organic levels of public support for those parties.
 
 Third, this article contributes to currently on-going efforts to advance the methodological aspects of research on media and public opinion [@Vliegenthart:2014di]. Unlike many quantitative studies, we provide an analytically sophisticated qualitative investigation of our statistical findings. Most previous research on the visibility-support nexus relies primarily on statistical evidence, which cannot necessarily address important questions relating to the substantive historical narrative of a particular political party. We find that, in two periods, increases in media coverage came after two months of stagnating or declining public support but was then followed by historically pivotal increases in support. While we cannot claim these periods are definitive instances of causality, they show that the particular and contingent historical unfolding of UKIP is consistent with the inference, suggested by our statistical analysis, that media coverage played a unique and important causal role in the rise of public support for UKIP.
-
-There are areas for future research which grow out of this study. Content analysis of the coverage under question could be conducted. It is possible that, by disaggregating the coverage further, different types of coverage may have different effects; it would also be interesting to see whether positive and negative coverage has a differential impact on future levels of public support. Secondly, researchers could look to differentiate between types of media and paper (i.e, tabloid and broadsheet), which was not our focus in the present study. 
 
 \newpage
 
