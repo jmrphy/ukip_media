@@ -43,22 +43,14 @@
 \let\Oldincludegraphics\includegraphics
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 
+\bigskip
+
 \title{Does Media Coverage Drive Public Support for UKIP or Does Public Support
-for UKIP Drive Media Coverage?\thanks{This is a draft working paper. Justin Murphy (\url{http://jmrphy.net})
-is Assistant Professor of Politics at the University of Southampton.
-Daniel Devine is a post-graduate researcher at the University of
-Southampton. A previous version of this manuscript was presented at the
-2016 annual meeting of the Political Studies Association in Brighton,
-UK. Comments, questions, and suggestions are welcome and can be emailed
-to \href{mailto:j.murphy@soton.ac.uk}{\nolinkurl{j.murphy@soton.ac.uk}}.
-If you wish to cite, please use the citation and DOI provided with the
-most up-to-date version of this manuscript, which will be maintained at
-\url{http://j.mp/ukip-media}. This manuscript was last updated on April
-22, 2016.}  }
+for UKIP Drive Media Coverage?}
 
 
 
-\author{\Large Justin Murphy\vspace{0.05in} \newline\normalsize\emph{University of Southampton}   \and \Large Daniel Devine\vspace{0.05in} \newline\normalsize\emph{University of Southampton}  }
+\author{}
 
 
 \date{}
@@ -72,7 +64,8 @@ most up-to-date version of this manuscript, which will be maintained at
 \titleformat*{\subparagraph}{\normalsize\itshape}
 
 \usepackage{natbib}
-\bibliographystyle{plainnat}
+\setcitestyle{round,aysep={}}
+\bibliographystyle{apalike}
 
 
 \newtheorem{hypothesis}{Hypothesis}
@@ -96,14 +89,14 @@ most up-to-date version of this manuscript, which will be maintained at
 \makeatother
 \hypersetup{breaklinks=true,
             bookmarks=true,
-            pdfauthor={Justin Murphy (University of Southampton) and Daniel Devine (University of Southampton)},
-            pdfkeywords = {UKIP, media, public opinion, political parties, right-wing populism},  
+            pdfauthor={},
+            pdfkeywords = {},  
             pdftitle={Does Media Coverage Drive Public Support for UKIP or Does Public Support
 for UKIP Drive Media Coverage?},
             colorlinks=true,
-            citecolor=BrickRed,
-            urlcolor=MidnightBlue,
-            linkcolor=MidnightBlue,
+            citecolor=Black,
+            urlcolor=Black,
+            linkcolor=Black,
             pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls
 
@@ -121,7 +114,7 @@ for UKIP Drive Media Coverage?},
 
 {
    \relax \centering \normalsize\fontsize{11}{12} 
-\textbf{\authorfont Justin Murphy} \\ \emph{\small University of Southampton} \\ \medskip  \par \textbf{\authorfont Daniel Devine} \\ \emph{\small University of Southampton} \\ \medskip 
+
   \vskip 1.5em%
 }
 
@@ -131,62 +124,21 @@ for UKIP Drive Media Coverage?},
 
 
 
-
-
-\begin{abstract}
-
-    \hbox{\vrule height .2pt width 39.14pc}
-
-    \vskip 8.5pt % \small 
-
-\noindent \footnotesize \textbf{Abstract:} Previous research suggests media attention may cause support for
-populist right-wing parties, but extant evidence is mostly limited to
-proportional representation systems in which such an effect would be
-most likely. At the same time, in the United Kingdom's
-first-past-the-post system, an ongoing political and regulatory debate
-revolves around whether the media give disproportionate coverage to the
-populist right-wing UK Independence Party (UKIP). We use a mixed-methods
-research design to investigate the causal dynamics of UKIP support and
-media coverage as an especially valuable case. Vector autoregression
-(VAR) using monthly, aggregate time-series data from January 2004 to
-February 2016 provides new evidence consistent with a model in which
-media coverage drives party support, but not vice-versa. Additionally,
-we identify key periods in which stagnating or declining support for
-UKIP is followed by increases in media coverage and subsequent increases
-in public support. The findings show that media coverage may drive
-public support for right-wing populist parties, in a substantively
-non-trivial fashion irreducible to previous levels of public support,
-even in a national institutional environment least supportive of such an
-effect. The findings have troubling implications for political debates
-in the United Kingdom and potentially liberal democracies more
-generally.
-
-
-\vskip 8.5pt \noindent \footnotesize \emph{Keywords}: UKIP, media, public opinion, political parties, right-wing populism \par
-
-    \hbox{\vrule height .2pt width 40pc}
-
-
-
-\end{abstract}
-
-
 \vskip 6.5pt
 
-\noindent  \section{Introduction}\label{introduction}
+\noindent \doublespacing \section{Introduction}\label{introduction}
 
 If the visibility of a political party in the media shapes the public
-support it receives, then the degree to which the media gives attention
-to different political parties can have significant implications for
-democracy. In the United Kingdom, critics allege that the media pays
-disproportionate attention to the populist, right-wing UK Independence
-Party (UKIP) but media elites claim that media coverage of UKIP is
-driven by increasing public support for the party. Descriptively, media
-attention to UKIP is greater than that given to other, similarly sized
-parties on the right as well as the left
-\citep{Goodwin:03LtHfhh, Stevenson:wo, Soussi:vy}, but UK media
-regulator Ofcom as well as the BBC have publicly defended the attention
-paid to UKIP on grounds of public support for the party
+support it receives, then the media attention given to different
+political parties can have significant implications for democracy. In
+the United Kingdom, critics allege that the media pay disproportionate
+attention to the populist, right-wing UK Independence Party (UKIP) but
+media elites claim that media coverage of UKIP is driven by increasing
+public support for the party. Descriptively, media attention to UKIP is
+greater than that given to other, similarly sized parties on the right
+as well as the left \citep{Goodwin:03LtHfhh, Stevenson:wo, Soussi:vy},
+but UK media regulator Ofcom as well as the BBC have publicly defended
+the attention paid to UKIP on grounds of public support for the party
 \citep{Sweeney:wp, Wintour:vf}. Implied in this elite reasoning is a
 causal model, namely that public support drives media coverage rather
 than vice-versa.
@@ -289,7 +241,7 @@ individual-level party preferences in Germany
 test the following hypothesis.
 
 \begin{quote}
-H1: \emph{Increases in media coverage of UKIP will be associated with
+H1: \emph{Increases in media coverage of UKIP will be associated with future
 increases in public support for UKIP, controlling for previous changes
 in public support.}
 \end{quote}
@@ -342,7 +294,7 @@ entities with uniquely strong influence on media agendas, we propose the
 following additional hypothesis opposite to H1.
 
 \begin{quote}
-H2: \emph{Increases in public support for UKIP will be associated with
+H2: \emph{Increases in public support for UKIP will be associated with future
 increases in media coverage of UKIP, controlling for previous changes in
 media coverage.}
 \end{quote}
@@ -378,8 +330,27 @@ believing that, for these types of study, this is a reasonable and
 valuable way of measuring media coverage. This is the most efficient way
 to analyse large amounts of media content over a long period of time, an
 approach which is especially suitable for our present purposes given
-that we are only looking at quantity or intensity of converage (i.e.,
+that we are only looking at quantity or intensity of coverage (i.e.,
 the number of articles each month).
+
+The variable \emph{Articles} reflects the number of articles Nexis
+returns from the first day of each month until the last day of each
+month. Figure 1 provides a summary view of the two main variables of
+interest. The dotted line represents \emph{Support} and the solid line
+represents \emph{Articles}. Raw values are displayed in the first two
+(top) panels. For ease of direct comparison the bottom panel displays
+standardized scores in which each value is derived by subtracting the
+mean of the particular time-series and dividing by one standard
+deviation.
+
+It is also plausible that elections have an independent effect on
+coverage and support due to general increased media attention and
+campaigning. For this reason, we have included eponymous dummy variables
+for the months of each national and European election within the
+sampling period. The elections included are three European elections
+(June 2004, June 2009 and May 2014) and three general elections (May
+2005, May 2010, and May 2015). European elections coincide with local
+elections in the UK.
 
 \setlength\parindent{0pt}
 
@@ -394,25 +365,6 @@ the number of articles each month).
 \end{figure}
 
 \setlength\parindent{24pt}
-
-The variable \emph{Articles} reflects the number of articles Nexi s
-returns from the first day of each month until the last day of each
-month. Figure 1 provides a summary view of the two main variables of
-interest. The dotted line represents \emph{Support} and the solid line
-represents \emph{Articles}. Raw values are displayed in the first two
-(top) panels. For ease of direct comparison the bottom panel displays
-standardized scores in which each value is derived by subtracting the
-mean of the particular time-series and dividing by one standard
-devation.
-
-It is also plausible that elections have an independent effect on
-coverage and support due to general increased media attention and
-campaigning. For this reason, we have included eponymous dummy variables
-for the months of each national and European election within the
-sampling period. The elections included are three European elections
-(June 2004, June 2009 and May 2014) and three general elections (May
-2005, May 2010, and May 2015). European elections coincide with local
-elections in the UK.
 
 In the present analysis we do not consider public opinion on particular
 political issues, measures of objective political or policy dynamics, or
@@ -915,66 +867,6 @@ instances of causality, they show that the particular and contingent
 historical unfolding of UKIP is consistent with the inference, suggested
 by our statistical analysis, that media coverage played a unique and
 important causal role in the rise of public support for UKIP.
-
-\newpage
-
-\section{Supplementary Information}\label{supplementary-information}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{ukip_media_files/var-plot-support.pdf}
-\caption{VAR Diagnostics for Support}
-\end{figure}
-
-\pagebreak
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{ukip_media_files/var-plot-articles.pdf}
-\caption{VAR Diagnostics for Articles}
-\end{figure}
-
-\pagebreak
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{ukip_media_files/figure-latex/stability-check-vote-1.pdf}
-\caption{Checking temporal stability of VAR model with cumulative sums
-of residuals}
-\end{figure}
-
-\newpage
-
-\subsection{Breusch-Godrey Test of serially correlated errors for VAR
-model}\label{breusch-godrey-test-of-serially-correlated-errors-for-var-model}
-
-\begin{verbatim}
-## 
-##  Breusch-Godfrey LM test
-## 
-## data:  Residuals of VAR object varmodel
-## Chi-squared = 20, df = 20, p-value = 0.2
-\end{verbatim}
-
-\subsection{Multivariate ARCH-LM test for heteroskedasticity in Var
-model}\label{multivariate-arch-lm-test-for-heteroskedasticity-in-var-model}
-
-\begin{verbatim}
-## 
-##  ARCH (multivariate)
-## 
-## data:  Residuals of VAR object varmodel
-## Chi-squared = 40, df = 40, p-value = 0.8
-\end{verbatim}
-
-\newpage
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{ukip_media_files/figure-latex/qual-zoomed-plot-1.pdf}
-\caption{Standardized Time-Series with Green Dot-Dash Lines Indicating
-Non-Responsively Increasing Media Coverage, April 2012 to January 2014}
-\end{figure}
 
 \newpage
 
