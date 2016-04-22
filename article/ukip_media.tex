@@ -870,6 +870,64 @@ important causal role in the rise of public support for UKIP.
 
 \newpage
 
+\section{Supplementary Information}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{ukip_media_files/var-plot-support.pdf}
+\caption{VAR Diagnostics for Support}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{ukip_media_files/var-plot-articles.pdf}
+\caption{VAR Diagnostics for Articles}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{ukip_media_files/figure-latex/stability-check-vote-1.pdf}
+\caption{Checking temporal stability of VAR model with cumulative sums
+of residuals}
+\end{figure}
+
+\newpage
+
+\subsection{Breusch-Godrey Test of serially correlated errors for VAR
+model}\label{breusch-godrey-test-of-serially-correlated-errors-for-var-model}
+
+\begin{verbatim}
+## 
+##  Breusch-Godfrey LM test
+## 
+## data:  Residuals of VAR object varmodel
+## Chi-squared = 20, df = 20, p-value = 0.2
+\end{verbatim}
+
+\subsection{Multivariate ARCH-LM test for heteroskedasticity in Var
+model}\label{multivariate-arch-lm-test-for-heteroskedasticity-in-var-model}
+
+\begin{verbatim}
+## 
+##  ARCH (multivariate)
+## 
+## data:  Residuals of VAR object varmodel
+## Chi-squared = 40, df = 40, p-value = 0.8
+\end{verbatim}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{ukip_media_files/figure-latex/qual-zoomed-plot-1.pdf}
+\caption{Standardized Time-Series with Green Dot-Dash Lines Indicating
+Non-Responsively Increasing Media Coverage, May 2012 to January 2014}
+\end{figure}
+
+\newpage
+
 \bibliography{mybib}
 
 \end{document}
