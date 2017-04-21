@@ -4,7 +4,7 @@ output:
     citation_package: natbib
     keep_tex: true
     fig_caption: true
-    latex_engine: pdflatex
+    latex_engine: xelatex
     template: Murphy_custom.tex
 title: "Does Media Coverage Drive Public Support for UKIP or Does Public Support for UKIP Drive Media Coverage?"
 geometry: margin=1in
@@ -14,6 +14,7 @@ citecolor: MidnightBlue
 fontsize: 12pt
 spacing: double
 bibliography: mybib
+csl: bjps.csl
 ---
 
 # Introduction
@@ -72,7 +73,7 @@ options(xtable.comment = FALSE)
 #setwd("C:/Users/Daniel/Dropbox/ukip_media/article")
 setwd("~/Dropbox/gh_projects/ukip_media/article")
 #df<-read.csv("C:/Users/Daniel/Dropbox/ukip_media/data/ukip_media.csv")
-df<-read.csv("~/Dropbox/gh_projects/ukip_media/data/ukip_media.csv")
+df<-read.csv("~/Dropbox/gh_projects/ukip_media/data/ukip_media.csv", fileEncoding="latin1", encoding="UTF-8")
 df$Date<-mdy(df$Date)
 
 df$UKIP.Vote<-interpNA(df$UKIP.Vote, method = "linear")
@@ -316,6 +317,10 @@ To interpret the estimated effect media coverage has on UKIP support, consider t
 
 Finally, with respect to the statistical modeling, we note there are limitations of the data which may make it difficult to identify the full range of causal effects in a VAR approach. First, it is possible that monthly measures are too infrequent to capture causal effects if the real lag between effects is shorter than one month. Also, importantly, structural tests on all models suggest strong evidence of instantaneous causality. Thus, the VAR results suggest clear but imperfect and, for reasons discussed above, inherently limited evidence for Hypothesis 1 that increases in media coverage lead to increases in public support. The VAR results provide no evidence for Hypothesis 2, that increases in public support lead to increases in media coverage. Given the problem of instantaneous causality, we cannot rule out the possibility that both variables drive each other in periods shorter than one month or that both variables are driven by some third unobserved variable. Nonetheless, an empirical fact of our data is that media coverage Granger-causes public support and not vice-versa.
 
+# Robustness
+
+We also checked weekly data.
+
 # Qualitative Analysis
 
 To what extent are the statistical regularities identified by the vector autoregression historically significant causal factors in the rise of public support for UKIP? To facilitate a qualitative investigation of the dynamics, we quantitatively identified months which meet criteria similar to the concept of Granger causality. Any month ($t$) that is immediately preceded by two months ($t-1$, $t-2$) of stagnating or declining public support but increased media coverage, we designate as a month of "uncaused" media increase or media "bias" for short. Symmetrically, any month that is immediately preceded by two months of stagnating or declining media coverage but increasing public support, we consider a month of "uncaused" or exogenously increasing public support. To mitigate the probability we will be counting mere noise as meaningful increases, we count as increases only those greater than .05 standard deviations and all other months as "stagnating or decreasing." Figure 4 presents the standardized values of each time series with dot-dash vertical lines indicating months of uncaused media 'bias' and long-dash vertical lines indicating months of uncaused increases in public support. A first consideration of Figure 4 reveals that increases in media coverage unwarranted by public support are not only roughly as frequent as uncaused increases in public support, but they are found at multiple pivotal months in periods of the most dramatic increases in UKIP's public support. To be clear, we are not claiming to pinpoint key moments of causal effect; in any particular point of the time-series, it is impossible to know whether a particular pattern represents a random or systematic component. Rather, we take the evidence from the VAR to be our warrant for exploring the qualitative data in search of examples whereby the substantive significance of the statistical evidence may either be better illustrated or possibly discounted due to untheorized contingencies. Based on Figure 4, we focus especially on two key periods: from July to September of 2012, and the second half of 2013.
@@ -446,4 +451,11 @@ ggplot(qual.molten, aes(x=as.Date(Date))) +
     geom_vline(xintercept = as.numeric(as.Date(qual.graph.df$Date[qual.graph.df$exog==1])), linetype = "longdash", color = "#F0E442", alpha=.6)
 ```
 
+## Weekly data
 
+```{r, warning=FALSE, message=FALSE, error=FALSE, echo=FALSE, echo=FALSE, fig.height=4, fig.width=8}
+
+```
+
+```{r, warning=FALSE, message=FALSE, error=FALSE, echo=FALSE, echo=FALSE, fig.height=4, fig.width=8, fig.cap='Impulse Response Plot Shows Effect on Support from an Exogenous Increase in Articles'}
+```

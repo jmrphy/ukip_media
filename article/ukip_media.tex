@@ -43,10 +43,8 @@
 \let\Oldincludegraphics\includegraphics
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 
-\bigskip
-
 \title{Does Media Coverage Drive Public Support for UKIP or Does Public Support
-for UKIP Drive Media Coverage?}
+for UKIP Drive Media Coverage? }
 
 
 
@@ -63,9 +61,8 @@ for UKIP Drive Media Coverage?}
 \titleformat*{\paragraph}{\normalsize\itshape}
 \titleformat*{\subparagraph}{\normalsize\itshape}
 
-\usepackage{natbib}
-\setcitestyle{round,aysep={}}
-\bibliographystyle{apalike}
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
 
 
 \newtheorem{hypothesis}{Hypothesis}
@@ -94,9 +91,9 @@ for UKIP Drive Media Coverage?}
             pdftitle={Does Media Coverage Drive Public Support for UKIP or Does Public Support
 for UKIP Drive Media Coverage?},
             colorlinks=true,
-            citecolor=Black,
-            urlcolor=Black,
-            linkcolor=Black,
+            citecolor=MidnightBlue,
+            urlcolor=MidnightBlue,
+            linkcolor=MidnightBlue,
             pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls
 
@@ -241,9 +238,9 @@ individual-level party preferences in Germany
 test the following hypothesis.
 
 \begin{quote}
-H1: \emph{Increases in media coverage of UKIP will be associated with future
-increases in public support for UKIP, controlling for previous changes
-in public support.}
+H1: \emph{Increases in media coverage of UKIP will be associated with
+future increases in public support for UKIP, controlling for previous
+changes in public support.}
 \end{quote}
 
 It is also theoretically plausible, as some scholars have argued, that
@@ -294,9 +291,9 @@ entities with uniquely strong influence on media agendas, we propose the
 following additional hypothesis opposite to H1.
 
 \begin{quote}
-H2: \emph{Increases in public support for UKIP will be associated with future
-increases in media coverage of UKIP, controlling for previous changes in
-media coverage.}
+H2: \emph{Increases in public support for UKIP will be associated with
+future increases in media coverage of UKIP, controlling for previous
+changes in media coverage.}
 \end{quote}
 
 The remainder of the paper sets out to investigate these two hypotheses.
@@ -330,27 +327,8 @@ believing that, for these types of study, this is a reasonable and
 valuable way of measuring media coverage. This is the most efficient way
 to analyse large amounts of media content over a long period of time, an
 approach which is especially suitable for our present purposes given
-that we are only looking at quantity or intensity of coverage (i.e.,
-the number of articles each month).
-
-The variable \emph{Articles} reflects the number of articles Nexis
-returns from the first day of each month until the last day of each
-month. Figure 1 provides a summary view of the two main variables of
-interest. The dotted line represents \emph{Support} and the solid line
-represents \emph{Articles}. Raw values are displayed in the first two
-(top) panels. For ease of direct comparison the bottom panel displays
-standardized scores in which each value is derived by subtracting the
-mean of the particular time-series and dividing by one standard
-deviation.
-
-It is also plausible that elections have an independent effect on
-coverage and support due to general increased media attention and
-campaigning. For this reason, we have included eponymous dummy variables
-for the months of each national and European election within the
-sampling period. The elections included are three European elections
-(June 2004, June 2009 and May 2014) and three general elections (May
-2005, May 2010, and May 2015). European elections coincide with local
-elections in the UK.
+that we are only looking at quantity or intensity of coverage (i.e., the
+number of articles each month).
 
 \setlength\parindent{0pt}
 
@@ -365,6 +343,25 @@ elections in the UK.
 \end{figure}
 
 \setlength\parindent{24pt}
+
+The variable \emph{Articles} reflects the number of articles Nexis
+returns from the first day of each month until the last day of each
+month. Figure 1 provides a summary view of the two main variables of
+interest. The dotted line represents \emph{Support} and the solid line
+represents \emph{Articles}. Raw values are displayed in the first two
+(top) panels. For ease of direct comparison the bottom panel displays
+standardized scores in which each value is derived by subtracting the
+mean of the particular time-series and dividing by one standard
+devation.
+
+It is also plausible that elections have an independent effect on
+coverage and support due to general increased media attention and
+campaigning. For this reason, we have included eponymous dummy variables
+for the months of each national and European election within the
+sampling period. The elections included are three European elections
+(June 2004, June 2009 and May 2014) and three general elections (May
+2005, May 2010, and May 2015). European elections coincide with local
+elections in the UK.
 
 In the present analysis we do not consider public opinion on particular
 political issues, measures of objective political or policy dynamics, or
@@ -486,42 +483,42 @@ Information).
  & $\Delta Support$ & $\Delta Articles$ \\ 
 \\[-1.8ex] & (1) & (2)\\ 
 \hline \\[-1.8ex] 
- $\Delta Articles_{t-1}$ & 0.100$^{*}$ & $-$0.380$^{***}$ \\ 
-  & (0.054) & (0.092) \\ 
+ $\Delta Articles_{t-1}$ & 0.098$^{*}$ & $-$0.370$^{***}$ \\ 
+  & (0.051) & (0.088) \\ 
   & & \\ 
  $\Delta Support_{t-1}$ & $-$0.500$^{***}$ & $-$0.025 \\ 
-  & (0.100) & (0.180) \\ 
+  & (0.099) & (0.170) \\ 
   & & \\ 
- $\Delta Articles_{t-2}$ & 0.091$^{*}$ & $-$0.340$^{***}$ \\ 
-  & (0.053) & (0.091) \\ 
+ $\Delta Articles_{t-2}$ & 0.081 & $-$0.340$^{***}$ \\ 
+  & (0.050) & (0.086) \\ 
   & & \\ 
- $\Delta Support_{t-2}$ & $-$0.260$^{**}$ & $-$0.140 \\ 
-  & (0.100) & (0.170) \\ 
+ $\Delta Support_{t-2}$ & $-$0.260$^{***}$ & $-$0.130 \\ 
+  & (0.098) & (0.170) \\ 
   & & \\ 
- $\Delta Articles_{t-3}$ & 0.091$^{*}$ & $-$0.190$^{**}$ \\ 
-  & (0.052) & (0.089) \\ 
+ $\Delta Articles_{t-3}$ & 0.084$^{*}$ & $-$0.210$^{**}$ \\ 
+  & (0.049) & (0.085) \\ 
   & & \\ 
- $\Delta Support_{t-3}$ & $-$0.110 & $-$0.160 \\ 
-  & (0.095) & (0.160) \\ 
+ $\Delta Support_{t-3}$ & $-$0.088 & $-$0.150 \\ 
+  & (0.091) & (0.160) \\ 
   & & \\ 
- Constant & 0.004 & 0.026 \\ 
-  & (0.070) & (0.120) \\ 
+ Constant & 0.021 & 0.020 \\ 
+  & (0.066) & (0.110) \\ 
   & & \\ 
- Trend & 0.0001 & 0.0001 \\ 
+ Trend & $-$0.0002 & 0.0002 \\ 
   & (0.001) & (0.001) \\ 
   & & \\ 
- General Elections & $-$0.098 & 0.270 \\ 
-  & (0.240) & (0.420) \\ 
+ General Elections & $-$0.083 & 0.250 \\ 
+  & (0.240) & (0.410) \\ 
   & & \\ 
- EU Elections & 0.430 & 1.400$^{***}$ \\ 
-  & (0.260) & (0.450) \\ 
+ EU Elections & 0.440$^{*}$ & 1.400$^{***}$ \\ 
+  & (0.260) & (0.440) \\ 
   & & \\ 
 \hline \\[-1.8ex] 
-Observations & 142 & 142 \\ 
+Observations & 153 & 153 \\ 
 R$^{2}$ & 0.150 & 0.230 \\ 
-Adjusted R$^{2}$ & 0.097 & 0.180 \\ 
-Residual Std. Error (df = 132) & 0.400 & 0.680 \\ 
-F Statistic (df = 9; 132) & 2.700$^{***}$ & 4.400$^{***}$ \\ 
+Adjusted R$^{2}$ & 0.100 & 0.180 \\ 
+Residual Std. Error (df = 143) & 0.390 & 0.670 \\ 
+F Statistic (df = 9; 143) & 2.900$^{***}$ & 4.700$^{***}$ \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
@@ -569,10 +566,10 @@ other variable.
 \\[-1.8ex]\hline \\[-1.8ex] 
  & Support & Articles \\ 
 \hline \\[-1.8ex] 
-P-value & $0.054$ & $0.740$ \\ 
+P-value & $0.073$ & $0.790$ \\ 
 DF1 & $3$ & $3$ \\ 
-DF2 & $264$ & $264$ \\ 
-F-test & $2.600$ & $0.410$ \\ 
+DF2 & $286$ & $286$ \\ 
+F-test & $2.400$ & $0.340$ \\ 
 \hline \\[-1.8ex] 
 \end{tabular} 
 \end{table}
@@ -593,20 +590,20 @@ Increase in Articles}
 
 To interpret the estimated effect media coverage has on UKIP support,
 consider the impulse response function plotted in Figure 3. The maximum
-number of monthly articles observed in the sample is 4256, therefore a
+number of monthly articles observed in the sample is 5212, therefore a
 one-percent increase in articles is equal to a monthly increase of about
-43 articles. The maximum value of \emph{Support} is 16, so the first
-period of the impulse response (0.19) suggests that in response to a
-43-article increase, \emph{Support} would increase by about 19\% of 1\%
+52 articles. The maximum value of \emph{Support} is 16, so the first
+period of the impulse response (0.18) suggests that in response to a
+52-article increase, \emph{Support} would increase by about 18\% of 1\%
 of 16\%. This amounts to an increase of roughly 0.03\% of the population
 reporting an intention to vote for UKIP. While this hypothetical effect
 of a small increase in coverage is minute, the history of UKIP's media
 coverage contains several months of exceptionally large increases in
 reporting. Those months in the top 1\% of article growth (the 99th
-percentile) were characterized by article growth of 1649 articles or
-greater, that is, a growth rate of 38.75\% or greater. By the preceding
-calculations, a 38.75\% increase in articles would be associated with a
-7.25\% growth rate in \emph{Support}, equivalent to a 1.16-point
+percentile) were characterized by article growth of 1859 articles or
+greater, that is, a growth rate of 35.67\% or greater. By the preceding
+calculations, a 35.67\% increase in articles would be associated with a
+6.37\% growth rate in \emph{Support}, equivalent to a 1.02-point
 increase in the percentage of the population reporting an intention to
 vote for UKIP.
 
@@ -626,6 +623,10 @@ variables drive each other in periods shorter than one month or that
 both variables are driven by some third unobserved variable.
 Nonetheless, an empirical fact of our data is that media coverage
 Granger-causes public support and not vice-versa.
+
+\section{Robustness}\label{robustness}
+
+We also checked weekly data.
 
 \section{Qualitative Analysis}\label{qualitative-analysis}
 
@@ -870,13 +871,15 @@ important causal role in the rise of public support for UKIP.
 
 \newpage
 
-\section{Supplementary Information}
+\section{Supplementary Information}\label{supplementary-information}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics{ukip_media_files/var-plot-support.pdf}
 \caption{VAR Diagnostics for Support}
 \end{figure}
+
+\pagebreak
 
 \begin{figure}[htbp]
 \centering
@@ -914,7 +917,7 @@ model}\label{multivariate-arch-lm-test-for-heteroskedasticity-in-var-model}
 ##  ARCH (multivariate)
 ## 
 ## data:  Residuals of VAR object varmodel
-## Chi-squared = 40, df = 40, p-value = 0.8
+## Chi-squared = 40, df = 40, p-value = 0.7
 \end{verbatim}
 
 \newpage
@@ -923,8 +926,10 @@ model}\label{multivariate-arch-lm-test-for-heteroskedasticity-in-var-model}
 \centering
 \includegraphics{ukip_media_files/figure-latex/qual-zoomed-plot-1.pdf}
 \caption{Standardized Time-Series with Green Dot-Dash Lines Indicating
-Non-Responsively Increasing Media Coverage, May 2012 to January 2014}
+Non-Responsively Increasing Media Coverage, April 2012 to January 2014}
 \end{figure}
+
+\subsection{Weekly data}\label{weekly-data}
 
 \newpage
 
